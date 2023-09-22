@@ -24,3 +24,4 @@ export const getRooms = () => {
     })
     .catch(error => console.log('error'));
 }
+
