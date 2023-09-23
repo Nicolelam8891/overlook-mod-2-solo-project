@@ -4,12 +4,20 @@ body {
   min-height: 100vh;
   margin: 0;
   margin: auto;
-  background: #86B29D;
+  background: #82a393;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
+.flower {
+  margin-left: 20px;
+  width: 160px; 
+  height: 150px;
+}
+
 header {
+  display: flex;
+  justify-content: space-between; flex-direction: row;
   text-align: end;
   background-color: #B8D6C4;
   padding-top: 20px;
@@ -25,7 +33,7 @@ header {
 
 button {
   background-color: #B8D6C4;
-  color: #50846b;
+  color: #709382;
   font-weight: bold;
   font-family: fantasy;
   padding: 10px 20px; 
