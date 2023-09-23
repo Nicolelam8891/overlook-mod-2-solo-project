@@ -6,6 +6,8 @@ import './css/styles.css';
 import { getCustomers, getBookings, getRooms } from './apiCalls'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './images/sage1.png'
+
 import { getAllCustomerBookings } from './customer-bookings';
 import { loadHomePage } from './domUpdates';
 
