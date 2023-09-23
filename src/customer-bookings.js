@@ -62,3 +62,15 @@ console.log(getSelectedAvailableRooms("2023/02/16", "residential suite", booking
 //when customer clicks on the book now button, 
   //return the object element into an array
 
+//get all room types for customer
+//population drop-down-menu of all the different types of rooms
+//console.log is working 
+export const getAllRoomTypes = (roomsData) => {
+  const allRoomTypes = roomsData
+    .map(room => room.roomType) 
+    .sort((a, b) => a - b)
+    const uniqueRoomTypes = [...new Set(allRoomTypes)]
+    return uniqueRoomTypes
+} 
+
+getAllRoomTypes(roomsData)
