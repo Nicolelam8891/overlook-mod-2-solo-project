@@ -33,7 +33,9 @@ export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData) => {
 
 //if customer chooses a date from the past, return "error, you have selected a date in the past, please select a date in the future"
 
-export const getSelectedAvailableRooms = (dateSelected, bookingsData, roomsData) => {
+//roomType: conditional, filter through roomsData. (room => room.roomType === roomType) return the object element
+
+export const getSelectedAvailableRooms = (dateSelected, roomSelected, bookingsData, roomsData) => {
   //Need the date() constructor to create date objects. When it is called as a function, it retuns a string representing the current time. 
   //need the toISOString() to get it to the date in YYYY-MM-DD format. Need to use slice method to extract only the first 10 characters, which corresponds to just the date portion. 
   const currentDate = new Date().toISOString().slice(0, 10);
@@ -47,10 +49,14 @@ export const getSelectedAvailableRooms = (dateSelected, bookingsData, roomsData)
     .filter((booking) => booking.date === dateSelected)
     .map((booking) => booking.roomNumber);
   //this function will return an array of objects of all the avail rooms.
-  const getAvailableRooms = roomsData.filter(
-    (room) => !getUnavailableDateAndRoomNumber.includes(room.number)
+  const getAvailableRooms = roomsData.filter(room => 
+    !getUnavailableDateAndRoomNumber.includes(room.number) && room.roomType === roomSelected
   );
+  console.log("getAvailableRooms:=====", getAvailableRooms);
+  
+  
+
   return getAvailableRooms;
 };
-getSelectedAvailableRooms("2022/02/16", bookingsData, roomsData);
+console.log(getSelectedAvailableRooms("2023/02/16", "residential suite", bookingsData, roomsData))
 
