@@ -5,6 +5,7 @@ import {
   getAllCustomerBookings,
   getPastOrUpcomingCustomerBookings,
   getSelectedAvailableRooms,
+  getAllRoomTypes,
 } from "../src/customer-bookings";
 
 describe("get customer bookings", function () {
@@ -105,5 +106,15 @@ describe("get customer available rooms", function () {
       roomsData
     );
     expect(availableRooms).to.equal("Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search.");
+  });
+});
+
+describe("should get only unqiue room types", function () {
+  it("should be a function", function () {
+    expect(getAllRoomTypes).to.be.a("function");
+  });
+  it("should return room types without any duplicates", function () {
+    const uniqueRoomTypes = getAllRoomTypes(roomsData)
+    expect(uniqueRoomTypes).to.deep.equal(["residential suite", "suite", "single room"]);
   });
 });
