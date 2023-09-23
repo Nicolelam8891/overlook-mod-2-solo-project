@@ -1,5 +1,5 @@
 import { calculateBookingsSum } from "../src/calculations";
-import { bookingsData } from "./sample-data";
+import { bookingsData, roomsData } from "./sample-data";
 import { getAllCustomerBookings } from "../src/customer-bookings";
 import { getCustomerRoomNumbers } from "../src/calculations";
 
@@ -20,16 +20,16 @@ describe("get customer room numbers", function () {
 });
 
 describe("calculate customer bookings", function () {
-  it.skip("should be a function", function () {
+  it("should be a function", function () {
     expect(calculateBookingsSum).to.be.a("function");
   });
 
-  it.skip("should calculate the total spent on all bookings for the customer", function () {
-    const customerBookings = getAllCustomerBookings(20, bookingsData);
-    let result = calculateBookingsSum(userBookings);
-    expect(result).to.be.a(231.46);
+  it("should calculate the total spent on all bookings for the customer", function () {
+    const allCustomerBookings = getAllCustomerBookings(20, bookingsData);
+    const customerRoomNumbers = getCustomerRoomNumbers(allCustomerBookings);
+    const sum = calculateBookingsSum(customerRoomNumbers, roomsData);
+   
+    expect(sum).to.equal(231.46);
   });
 });
 
-// let userBookings = getAllCustomerBookings(50, bookingsData)
-// calculateBookingsSum(userBookings)
