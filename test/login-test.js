@@ -15,10 +15,10 @@ describe("handle user login", function() {
   });
 
   it("should alert when there is a successful login ", function() {
-    let username = "customer";
+    let username = "customer50";
     let password = "overlook2021";
     let result = handleLogin(username, password)
-    expect(result).to.equal("Login successful!");
+    expect(result).to.equal(50);
   });
 
   it("should alert when there are invalid credentials", function() {
