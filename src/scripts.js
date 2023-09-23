@@ -26,3 +26,4 @@ const getAllData = () => {
   })
 }
 getAllData()
+
