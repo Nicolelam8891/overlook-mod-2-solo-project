@@ -11,8 +11,9 @@ export let handleLogin = (username, password) => {
   }
 
   if (username.includes("customer") && password === "overlook2021") {
-    return "Login successful!"
-    // return parseInt(userId); //change string into a number
+    
+    return parseInt(userId)
+    // return parseInt(userId); change string into a number
   } else {
     return "Invalid credentials, please try again!";
   }
