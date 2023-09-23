@@ -52,11 +52,13 @@ export const getSelectedAvailableRooms = (dateSelected, roomSelected, bookingsDa
   const getAvailableRooms = roomsData.filter(room => 
     !getUnavailableDateAndRoomNumber.includes(room.number) && room.roomType === roomSelected
   );
-  console.log("getAvailableRooms:=====", getAvailableRooms);
-  
-  
-
-  return getAvailableRooms;
+  if (getAvailableRooms.length === 0) {
+    return "Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search."
+  } else {
+    return getAvailableRooms;
+  }
+//getAvailableRooms should return an array of elements of the avail rooms. 
+//if there are NO elements in the array, return "Sage Serenity Hotel deeply apologizes for the inconvience. The room you selected is not available on the date you selectedm please adjust your search."
 };
 console.log(getSelectedAvailableRooms("2023/02/16", "residential suite", bookingsData, roomsData))
 
