@@ -1,4 +1,4 @@
-
+import { bookingsData } from "../test/sample-data";
 
 export const getAllCustomerBookings = (customerID, bookingsData) => {
   //taking in the two parameters. bookingsData has the array of booking objects, and each booking has a property 'userID' that associates it with a particular customer.
@@ -30,3 +30,18 @@ export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData) => {
     return "Error"
   }
 };
+
+//filter for a date
+//customer will choose a specified date
+//this will display on the DOM, input will come from the DOM
+//if booking.date === dateSelected (parameter) -> return "Sorry for the inconvience, but there are no room avail for that date."
+//else -> return all of the rooms that are avail for customer to choose from 
+  //customer 
+
+//
+const getSelectedAvailableRooms = (dateSelected, bookingsData) => {
+  const selectedAvailableRooms= bookingsData.filter(booking => booking.date === dateSelected) 
+    console.log("selectedAvailableRooms:=====", selectedAvailableRooms);
+    return selectedAvailableRooms
+}
+getSelectedAvailableRooms("2022/04/22", bookingsData)
