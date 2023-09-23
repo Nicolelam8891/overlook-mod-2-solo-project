@@ -97,4 +97,13 @@ describe("get customer available rooms", function () {
     );
     expect(availableRooms).to.equal("You have selected a date from the past, please select a date in the future.");
   });
+  it("should log an error if no rooms are avaiable for selected data and room type", function () {
+    let availableRooms = getSelectedAvailableRooms(
+      "2023/04/22",
+      "honeymoon suite",
+      bookingsData,
+      roomsData
+    );
+    expect(availableRooms).to.equal("Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search.");
+  });
 });
