@@ -73,6 +73,7 @@ describe("get customer available rooms", function () {
   it("should return all available rooms", function () {
     let availableRooms = getSelectedAvailableRooms(
       "2023/12/14",
+      "residential suite",
       bookingsData,
       roomsData
     );
@@ -84,28 +85,13 @@ describe("get customer available rooms", function () {
         bedSize: "queen",
         numBeds: 1,
         costPerNight: 358.4,
-      },
-      {
-        number: 7,
-        roomType: "single room",
-        bidet: false,
-        bedSize: "queen",
-        numBeds: 2,
-        costPerNight: 231.46,
-      },
-      {
-        number: 15,
-        roomType: "single room",
-        bidet: false,
-        bedSize: "queen",
-        numBeds: 2,
-        costPerNight: 231.46,
       }
     ]);
   });
   it("should log an error message if customer choose a past date", function () {
     let availableRooms = getSelectedAvailableRooms(
       "2022/04/22",
+      "residential suite",
       bookingsData,
       roomsData
     );
