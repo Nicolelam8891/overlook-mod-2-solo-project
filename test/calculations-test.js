@@ -15,7 +15,7 @@ describe("get customer room numbers", function () {
     const allCustomerBookings = getAllCustomerBookings(20, bookingsData);
     const customerRoomNumbers = getCustomerRoomNumbers(allCustomerBookings);
 
-    expect(customerRoomNumbers).to.deep.equal([7]);
+    expect(customerRoomNumbers).to.deep.equal([7, 14]);
   });
 });
 
@@ -29,7 +29,7 @@ describe("calculate customer bookings", function () {
     const customerRoomNumbers = getCustomerRoomNumbers(allCustomerBookings);
     const sum = calculateBookingsSum(customerRoomNumbers, roomsData);
    
-    expect(sum).to.equal(231.46);
+    expect(sum).to.equal(708.84);
   });
 });
 
