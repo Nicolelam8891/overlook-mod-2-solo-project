@@ -52,7 +52,7 @@ export const getSelectedAvailableRooms = (dateSelected, roomSelected, bookingsDa
     return "Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search."
   } else {
     return getAvailableRooms;
-  }
+  } 
 //getAvailableRooms should return an array of elements of the avail rooms. 
 //if there are NO elements in the array, return "Sage Serenity Hotel deeply apologizes for the inconvience. The room you selected is not available on the date you selectedm please adjust your search."
 };
