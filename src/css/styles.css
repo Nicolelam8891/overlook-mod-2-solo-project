@@ -1,3 +1,7 @@
+/* * {
+  border: 1px solid rgb(20, 21, 20) !important;
+} */
+
 .hidden {
   display: none;
 }
@@ -64,18 +68,22 @@ button:active {
   display: flex;
   justify-content: center;
 }
+
 .booking-scroll-box {
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x:hidden;
   background-color: #b8d6c4;
   width: 300px;
-  height: 500px;
+  height: 600px;
   border: 3px solid rgb(221, 233, 227);
   padding: 50px;
   margin: 20px;
   border-radius: 20px;
 }
+
 .login-wrapper {
   display: flex;
   justify-content: center;
@@ -128,11 +136,14 @@ button:active {
 }
 
 .past-booking-card {
-  width: 200px;
-  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 250px;
+  height: 200px;
   border: 3px solid rgb(221, 233, 227);
   border-radius: 20px;
-  padding: 50px;
+  padding: 20px;
+  padding-bottom: 80px;
   margin: 20px;
 }
-
