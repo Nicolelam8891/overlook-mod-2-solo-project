@@ -50,7 +50,8 @@ getAllData().then(() => {
       //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
       allCustomerBookings = getAllCustomerBookings(customerIdNumber,bookingsData);
       pastCustomerRooms = getPastOrUpcomingCustomerBookings("past", allCustomerBookings, roomsData);
-      upcomingCustomerRooms = getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings,roomsData);
+      upcomingCustomerRooms = getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings, roomsData);
+      console.log("upcomingCustomerRooms:=====", upcomingCustomerRooms);
 
       loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
     }

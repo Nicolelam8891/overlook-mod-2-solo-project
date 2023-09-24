@@ -145,7 +145,7 @@ button:active {
   justify-content: center;
 }
 
-.past-booking-card {
+.past-booking-cards, .future-booking-cards {
   display: flex;
   flex-direction: column;
   align-items: left;
