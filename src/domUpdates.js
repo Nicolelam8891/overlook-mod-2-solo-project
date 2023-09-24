@@ -2,11 +2,13 @@
 import { postNewBookedRoom } from "./apiCalls"
 import { getAllCustomerBookings } from "./customer-bookings"
 
-
-const dashboardPage = document.querySelector(".dashboard-page");
 const loginPage = document.querySelector(".login-page");
+const dashboardPage = document.querySelector(".dashboard-page");
 const pastCustomerBookings = document.querySelector("#past-customer-bookings")
 const futureCustomerBookings = document.querySelector("#future-customer-bookings")
+const modal = document.querySelector("#myModal");
+const findRoomButton = document.querySelector(".find-rooms-button") //this is the button that opens the modal
+const span = document.querySelector(".close"); //this is the <span> element that closes the modal. When you click on the x button, it will exit
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
   dashboardPage.classList.remove("hidden")
@@ -39,12 +41,27 @@ export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCu
   </div>
     `
   });
-
-
-
-
-
-
 }
+
+/* event listeners here */ 
+findRoomButton.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
+
+
 
 
