@@ -21,17 +21,16 @@ export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData, roomsD
       const bookingDate = new Date(booking.date); //convert to make it the same datatype
       return bookingDate < currentDate;
     });
- 
-    const pastRooms = []; //Tried the find method without the forEach and realized it wasn't grabbing all of the rooms. It would only grab the first one that matched, and move on to another room number. Would return 9 rooms instead of 13 rooms with the new information. With forEach, I am able to iterate through every element in the array. 
-    
+    //Customer 50 should have 18 rooms. pastBookings would return an array of objects, with 13 elements, which is correct. Tried find method, it would only grab the matching room number once, and then move on, not grabbing ALL/duplicates. It would only return an array of 9 elements instead of the 13. 
+    //With find, being inside of the forEach method, forEach will iterate through every single element in the array, and then the find method will find the room number that matches and then since I have a pastRooms variabled declared to an empty array, I am able to push the room elements into the array with the date added as a new key, which I assigned room.date = booking.date. 
+    let pastRooms = [];
     pastBookings.forEach(booking => {
       let room = roomsData.find(room => room.number === booking.roomNumber);
       if (room) {
-        pastRooms.push({...room, date: booking.date}); //spread operator
+        room.date = booking.date; // Directly mutate the original room object, ex: date: "2022/01/23"
+        pastRooms.push(room);
       }
     });
-
-    console.log("pastRooms:=====", pastRooms);
     return pastRooms;
 
   } else if (timeline === "upcoming") {
@@ -39,22 +38,22 @@ export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData, roomsD
       const bookingDate = new Date(booking.date); //convert to make it the same datatype
       return bookingDate > currentDate;
     });
-
-    const upcomingRooms = [];
     
+    let upcomingRooms = [];
     upcomingBookings.forEach(booking => {
       let room = roomsData.find(room => room.number === booking.roomNumber);
       if (room) {
-        upcomingRooms.push({...room, date: booking.date});
+        room.date = booking.date; // Directly mutate the original room object
+        upcomingRooms.push(room);
       }
     });
-
     return upcomingRooms;
 
   } else {
     return "Error";
   }
 };
+
 
 
 export const getSelectedAvailableRooms = (dateSelected, roomSelected, bookingsData, roomsData) => {
