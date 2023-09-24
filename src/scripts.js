@@ -44,7 +44,7 @@ getAllData().then(() => {
       loadDashboardPage()
       allCustomerBookings = getAllCustomerBookings(customerIdNumber, bookingsData)
       console.log("allCustomerBookings:=====", allCustomerBookings);
-      console.log(getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings))
+      console.log(getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings, roomsData))
     }
   });
 

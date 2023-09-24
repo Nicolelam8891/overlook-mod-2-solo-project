@@ -13,19 +13,26 @@ export const getAllCustomerBookings = (customerID, bookingsData) => {
   return allCustomerBookings;
 };
 
-export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData) => {
+export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData, roomsData) => {
   var currentDate = new Date(); //function stores the current date
 
   if (timeline === "past") {
-    return bookingsData.filter((booking) => {
+    const pastBookings = bookingsData.filter((booking) => {
       const bookingDate = new Date(booking.date); //convert to make it the same datatype
       return bookingDate < currentDate;
     });
+    const pastRoomNumbers = pastBookings.map(booking => booking.roomNumber) 
+    const pastRooms = roomsData.filter(room => pastRoomNumbers.includes(room.number))
+     return pastRooms
+
   } else if (timeline === "upcoming") {
-    return bookingsData.filter((booking) => {
+    const upcomingBookings = bookingsData.filter((booking) => {
       const bookingDate = new Date(booking.date); //convert to make it the same datatype
       return bookingDate > currentDate;
     });
+    const upcomingRoomNumbers = upcomingBookings.map(booking => booking.roomNumber)
+    const upcomingRooms = roomsData.filter(room => upcomingRoomNumbers.includes(room.number))
+     return upcomingRooms
   } else {
     return "Error";
   }
