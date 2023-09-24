@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-import { handleLogin } from '../src/login';
+import { handleLogin, checkValidCustomerLogin } from '../src/login';
 
 describe("handle user login", function() {
   it("should be a function", function() {
@@ -18,7 +18,7 @@ describe("handle user login", function() {
     let username = "customer50";
     let password = "overlook2021";
     let result = handleLogin(username, password)
-    expect(result).to.equal(50);
+    expect(result).to.equal(true);
   });
 
   it("should alert when there are invalid credentials", function() {
@@ -29,3 +29,16 @@ describe("handle user login", function() {
   });
 });
 
+describe("should verify customer ID", function() {
+  it("should be a function", function() {
+    expect(checkValidCustomerLogin).to.be.a("function");
+  });
+  it("should alert when there is a valid and invalid ID number", function() {
+    let username = "customer100";
+    let result = checkValidCustomerLogin(username)
+    expect(result).to.equal("Sorry, this is not a valid ID number, please try again.");
+    username = "customer50"
+    result = checkValidCustomerLogin(username)
+    expect(result).to.equal(50);
+  });
+});

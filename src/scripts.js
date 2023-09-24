@@ -10,7 +10,8 @@ import './images/sage1.png'
 
 import { getAllCustomerBookings } from './customer-bookings';
 //import { loadHomePage } from './domUpdates';
-import { handleLogin } from './login';
+import { handleLogin, checkValidCustomerLogin } from './login';
+import { loadDashboardPage } from './domUpdates';
 
 export let customersData;
 export let bookingsData;
@@ -35,8 +36,14 @@ getAllData()
 
 loginForm.addEventListener('submit', event => {
   event.preventDefault();
-  handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
-  
+  const customerIdNumber = checkValidCustomerLogin(userName.value);
+  // console.log("customerIdNumber:=====", customerIdNumber);
+  const successfulLogin = handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
+  console.log("successfulLogin:=====", successfulLogin);
+  if (successfulLogin === true && Number.isInteger(customerIdNumber)){ //isInteger will check if value pass is an integer or not. 
+    //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
+    loadDashboardPage()
+  }
 });
 
 
