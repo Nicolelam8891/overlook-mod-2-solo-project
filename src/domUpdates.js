@@ -15,28 +15,31 @@ export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
 }
 
 export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCustomerRooms) => {
+  
   pastCustomerRooms.forEach((room) => {
     pastCustomerBookings.innerHTML += //need to add card after card
-    `<div class="past-booking-card">
+    `<div class="past-booking-cards">
       <p>Room number: ${room.number} </p>
       <p>Room type: ${room.roomType} </p>
-      <p>Bed Type: ${room.bedSize} </p>
+      <p>Bed type: ${room.bedSize} </p>
       <p>Number of beds: ${room.numBeds} </p>
       <p>Date: ${room.date} </p>
     </div>
     `
+  });
+
   upcomingCustomerRooms.forEach((room) => {
     futureCustomerBookings.innerHTML += 
-    `<div class="past-booking-card">
+    `<div class="future-booking-cards">
     <p>Room number: ${room.number} </p>
     <p>Room type: ${room.roomType} </p>
-    <p>Bed Type: ${room.bedSize} </p>
+    <p>Bed type: ${room.bedSize} </p>
     <p>Number of beds: ${room.numBeds} </p>
     <p>Date: ${room.date} </p>
   </div>
     `
-  })
-  })
+  });
+
 
 
 
