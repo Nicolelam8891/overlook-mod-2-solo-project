@@ -52,7 +52,7 @@ getAllData().then(() => {
       pastCustomerRooms = getPastOrUpcomingCustomerBookings("past", allCustomerBookings, roomsData);
       upcomingCustomerRooms = getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings,roomsData);
 
-      loadDashboardPage(pastCustomerRooms);
+      loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
     }
   });
 });
