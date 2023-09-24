@@ -18,7 +18,7 @@
       <p class="sage-serenity-tagline"><em>"Relax, Renew, Rejuvenate at Sage Serenity!"</em></p>
     </section>
   </header>
-  <nav class="main-nav">
+  <nav class="main-nav" style="display:none">
     <section class="nav-left">
       <button type="submit" class="dashboard-button">Dashboard</button>   
     </section>
@@ -26,15 +26,30 @@
       <button type="submit" class="find-rooms-button">Find Rooms</button>
     </section>
   </nav>
-
-  <section class="booking-wrapper">
+  <section class="login-wrapper">
+    <div class="login-box">
+      <h2>Welcome to Sage Serenity!</h2>
+      <p><em>Please log in:</em></p>
+      <form>
+        <div class="username-wrapper">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" aria-label="Username field" required>
+      </div>
+      <div class="password-wrapper">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" aria-label="Password field" required>
+      </div>
+      <div class="login-button-wrapper">
+          <input class="login-button" type="submit" value="Login" aria-label="Login button">
+      </div>
+      </form>
+    </div>
+  </section>
+  <section class="booking-wrapper" style="display:none">
     <div class="booking-scroll-box">
-
     </div>
     <div class="booking-scroll-box">
-
     </div>
-
   </section>
 
   
