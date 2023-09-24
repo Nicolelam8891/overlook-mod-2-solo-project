@@ -1,8 +1,15 @@
-// const picker = datepicker(selector, options)
+
 import { postNewBookedRoom } from "./apiCalls"
 import { getAllCustomerBookings } from "./customer-bookings"
 
-export const loadHomePage = (bookingsData) => {
-  const allCustomerBookings = getAllCustomerBookings(9, bookingsData)
+
+const dashboardPage = document.querySelector(".dashboard-page");
+const loginPage = document.querySelector(".login-page");
+
+export const loadHomePage = () => {
+  dashboardPage.classList.remove("hidden")
+  loginPage.classList.add("hidden")
 }
+
+
 

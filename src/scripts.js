@@ -9,12 +9,16 @@ import './images/turing-logo.png'
 import './images/sage1.png'
 
 import { getAllCustomerBookings } from './customer-bookings';
-import { loadHomePage } from './domUpdates';
+//import { loadHomePage } from './domUpdates';
+import { handleLogin } from './login';
 
 export let customersData;
 export let bookingsData;
 export let roomsData;
 
+const loginForm = document.querySelector(".login-form")
+const userName = document.querySelector("#username")
+const password = document.querySelector("#password")
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -24,8 +28,16 @@ const getAllData = () => {
     customersData = data[0].customers;
     bookingsData = data[1].bookings;
     roomsData = data[2].rooms;
-  loadHomePage(bookingsData);
   })
 }
 getAllData()
+
+
+loginForm.addEventListener('submit', event => {
+  event.preventDefault();
+  handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
+  
+});
+
+
 

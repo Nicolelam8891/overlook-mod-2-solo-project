@@ -1,61 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href=".src/styles.css" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="datepicker.min.css">
-  <title>Sage Serenity Hotel</title>
-</head>
-<body>
-  <header>
-    <section>
-      <img class="flower" src="./images/sage1.png" alt="flower logo">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sage Serenity Hotel</title>
+  </head>
+  <body>
+    <header>
+      <section>
+        <img class="flower" src="./images/sage1.png" alt="flower logo" />
+      </section>
+      <section>
+        <h1>Sage Serenity Hotel</h1>
+        <p class="sage-serenity-tagline">
+          <em>"Relax, Renew, Rejuvenate at Sage Serenity!"</em>
+        </p>
+      </section>
+    </header>
+<!-- dashboard page -->
+    <section class="dashboard-page hidden">
+      <nav class="main-nav">
+        <section class="nav-left">
+          <button type="submit" class="dashboard-button">Dashboard</button>
+        </section>
+        <section class="nav-right">
+          <button type="submit" class="find-rooms-button">Find Rooms</button>
+      </nav>
+      <section class="booking-wrapper">
+        <div class="booking-scroll-box"></div>
+        <div class="booking-scroll-box"></div>
+      </section>
     </section>
-    <section>
-      <h1>Sage Serenity Hotel</h1>
-      <p class="sage-serenity-tagline"><em>"Relax, Renew, Rejuvenate at Sage Serenity!"</em></p>
-    </section>
-  </header>
-  <nav class="main-nav" style="display:none">
-    <section class="nav-left">
-      <button type="submit" class="dashboard-button">Dashboard</button>   
-    </section>
-    <section class="nav-right">
-      <button type="submit" class="find-rooms-button">Find Rooms</button>
-    </section>
-  </nav>
-  <section class="login-wrapper">
-    <div class="login-box">
-      <h2>Welcome to Sage Serenity!</h2>
-      <p><em>Please log in:</em></p>
-      <form>
-        <div class="username-wrapper">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" aria-label="Username field" required>
+<!-- login page -->
+  <section class="login-page">
+    <section class="login-wrapper">
+      <div class="login-box">
+        <h2>Welcome to Sage Serenity!</h2>
+        <p><em>Please log in:</em></p>
+        <form class="login-form">
+          <div class="username-wrapper">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              aria-label="Username field"
+            />
+          </div>
+          <div class="password-wrapper">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              aria-label="Password field"
+            />
+          </div>
+          <div class="login-button-wrapper">
+            <input
+              class="login-button"
+              type="submit"
+              value="Login"
+              aria-label="Login button"
+            />
+          </div>
+        </form>
       </div>
-      <div class="password-wrapper">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" aria-label="Password field" required>
-      </div>
-      <div class="login-button-wrapper">
-          <input class="login-button" type="submit" value="Login" aria-label="Login button">
-      </div>
-      </form>
-    </div>
-  </section>
-  <section class="booking-wrapper" style="display:none">
-    <div class="booking-scroll-box">
-    </div>
-    <div class="booking-scroll-box">
-    </div>
+    </section>
   </section>
 
-  
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="datepicker.min.js"></script>
-  <script src="bundle.js"></script>
-</body>
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>
