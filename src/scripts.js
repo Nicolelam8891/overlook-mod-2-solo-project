@@ -8,20 +8,20 @@ import { getCustomers, getBookings, getRooms } from './apiCalls'
 import './images/turing-logo.png'
 import './images/sage1.png'
 
-import { getAllCustomerBookings } from './customer-bookings';
+import { getAllCustomerBookings, getPastOrUpcomingCustomerBookings } from './customer-bookings';
 //import { loadHomePage } from './domUpdates';
 import { handleLogin, checkValidCustomerLogin } from './login';
 import { loadDashboardPage } from './domUpdates';
 
-export let customersData;
-export let bookingsData;
-export let roomsData;
+let customersData;
+let bookingsData;
+let roomsData;
+let customerIdNumber;
+let allCustomerBookings;
 
 const loginForm = document.querySelector(".login-form")
 const userName = document.querySelector("#username")
 const password = document.querySelector("#password")
-
-console.log('This is the JavaScript entry file - your code begins here.');
 
 const getAllData = () => {
   return Promise.all([getCustomers(), getBookings(), getRooms()])
@@ -31,20 +31,44 @@ const getAllData = () => {
     roomsData = data[2].rooms;
   })
 }
-getAllData()
+getAllData().then(() => {
+
+  loginForm.addEventListener('submit', event => {
+    event.preventDefault();
+    customerIdNumber = checkValidCustomerLogin(userName.value);
+    // console.log("customerIdNumber:=====", customerIdNumber);
+    const successfulLogin = handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
+    // console.log("successfulLogin:=====", successfulLogin);
+    if (successfulLogin === true && Number.isInteger(customerIdNumber)){ //isInteger will check if value pass is an integer or not. 
+      //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
+      loadDashboardPage()
+      allCustomerBookings = getAllCustomerBookings(customerIdNumber, bookingsData)
+      console.log("allCustomerBookings:=====", allCustomerBookings);
+      console.log(getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings))
+    }
+  });
 
 
-loginForm.addEventListener('submit', event => {
-  event.preventDefault();
-  const customerIdNumber = checkValidCustomerLogin(userName.value);
-  // console.log("customerIdNumber:=====", customerIdNumber);
-  const successfulLogin = handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
-  console.log("successfulLogin:=====", successfulLogin);
-  if (successfulLogin === true && Number.isInteger(customerIdNumber)){ //isInteger will check if value pass is an integer or not. 
-    //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
-    loadDashboardPage()
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
+
+
 
 
 

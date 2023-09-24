@@ -20,7 +20,7 @@
       </section>
     </header>
 <!-- dashboard page -->
-    <section class="dashboard-page hidden">
+    <section class="dashboard-page hidden"> //will need to hide this later
       <nav class="main-nav">
         <section class="nav-left">
           <button type="submit" class="dashboard-button">Dashboard</button>
@@ -29,8 +29,15 @@
           <button type="submit" class="find-rooms-button">Find Rooms</button>
       </nav>
       <section class="booking-wrapper">
-        <div class="booking-scroll-box"></div>
-        <div class="booking-scroll-box"></div>
+        <div class="booking-scroll-box" id="past-customer-bookings">
+          <h2>Past bookings</h2>
+          <div class="past-booking-card">
+
+          </div>
+        </div>
+        <div class="booking-scroll-box" id="future-customer-bookings">
+          <h2>Upcoming bookings</h2>
+        </div>
       </section>
     </section>
 <!-- login page -->
