@@ -21,22 +21,41 @@ export const getPastOrUpcomingCustomerBookings = (timeline, bookingsData, roomsD
       const bookingDate = new Date(booking.date); //convert to make it the same datatype
       return bookingDate < currentDate;
     });
-    const pastRoomNumbers = pastBookings.map(booking => booking.roomNumber) 
-    const pastRooms = roomsData.filter(room => pastRoomNumbers.includes(room.number))
-     return pastRooms
+ 
+    const pastRooms = []; //Tried the find method without the forEach and realized it wasn't grabbing all of the rooms. It would only grab the first one that matched, and move on to another room number. Would return 9 rooms instead of 13 rooms with the new information. With forEach, I am able to iterate through every element in the array. 
+    
+    pastBookings.forEach(booking => {
+      let room = roomsData.find(room => room.number === booking.roomNumber);
+      if (room) {
+        pastRooms.push({...room, date: booking.date}); //spread operator
+      }
+    });
+
+    console.log("pastRooms:=====", pastRooms);
+    return pastRooms;
 
   } else if (timeline === "upcoming") {
     const upcomingBookings = bookingsData.filter((booking) => {
       const bookingDate = new Date(booking.date); //convert to make it the same datatype
       return bookingDate > currentDate;
     });
-    const upcomingRoomNumbers = upcomingBookings.map(booking => booking.roomNumber)
-    const upcomingRooms = roomsData.filter(room => upcomingRoomNumbers.includes(room.number))
-     return upcomingRooms
+
+    const upcomingRooms = [];
+    
+    upcomingBookings.forEach(booking => {
+      let room = roomsData.find(room => room.number === booking.roomNumber);
+      if (room) {
+        upcomingRooms.push({...room, date: booking.date});
+      }
+    });
+
+    return upcomingRooms;
+
   } else {
     return "Error";
   }
 };
+
 
 export const getSelectedAvailableRooms = (dateSelected, roomSelected, bookingsData, roomsData) => {
   //Need the date() constructor to create date objects. When it is called as a function, it retuns a string representing the current time. 

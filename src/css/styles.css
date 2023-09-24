@@ -1,112 +1,116 @@
 .hidden {
-     display: none;
+  display: none;
 }
 
- h1, .sage-serenity-tagline {
-     color: #4e6158 
+h1,
+.sage-serenity-tagline {
+  color: #4e6158;
 }
- body {
-     min-height: 100vh;
-     margin: 0;
-     margin: auto;
-     background: #82a393;
-     background-repeat: no-repeat;
-     background-attachment: fixed;
+body {
+  min-height: 100vh;
+  margin: 0;
+  margin: auto;
+  background: #82a393;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
- .flower {
-     margin-left: 20px;
-     width: 160px;
-     height: 150px;
+.flower {
+  margin-left: 20px;
+  width: 160px;
+  height: 150px;
 }
- header {
-     display: flex;
-     justify-content: space-between;
-     flex-direction: row;
-     text-align: end;
-     background-color: #B8D6C4;
-     padding-top: 20px;
-     padding-right: 20px;
-     font-family: fantasy;
-     font-weight: bold;
-     font-size: x-large;
+header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  text-align: end;
+  background-color: #b8d6c4;
+  padding-top: 20px;
+  padding-right: 20px;
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: x-large;
 }
- .dashboard-button {
-     margin-right: 10px;
+.dashboard-button {
+  margin-right: 10px;
 }
- button {
-     background-color: #B8D6C4;
-     color: #709382;
-     font-weight: bold;
-     font-family: fantasy;
-     padding: 10px 20px;
-     border: none;
-     cursor: pointer;
-     border-radius: 10px;
-     font-size: 20px;
-     outline: none;
-     
+button {
+  background-color: #b8d6c4;
+  color: #709382;
+  font-weight: bold;
+  font-family: fantasy;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 20px;
+  outline: none;
 }
- button:hover {
-     background-color: #8cb2a5;
+button:hover {
+  background-color: #8cb2a5;
 }
- button:active {
-     background-color: #8ab39c;
-     color:#B8D6C4;
-     transform: scale(0.95);
+button:active {
+  background-color: #8ab39c;
+  color: #b8d6c4;
+  transform: scale(0.95);
 }
- .main-nav {
-     display: flex;
-     justify-content: flex-start;
-     margin-left: 50px;
-     margin-top: 25px;
+.main-nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 50px;
+  margin-top: 25px;
 }
- .booking-wrapper {
-     display: flex;
-     justify-content: center;
+.booking-wrapper {
+  display: flex;
+  justify-content: center;
 }
- .booking-scroll-box {
-     background-color: #B8D6C4;
-     width: 300px;
-     height: 500px;
-     border: 3px solid rgb(221, 233, 227);
-     padding: 50px;
-     margin: 20px;
-     border-radius: 20px;
+.booking-scroll-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #b8d6c4;
+  width: 300px;
+  height: 500px;
+  border: 3px solid rgb(221, 233, 227);
+  padding: 50px;
+  margin: 20px;
+  border-radius: 20px;
 }
- .login-wrapper{
-     display: flex;
-     justify-content: center;
-     margin-top: 150px;
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
 }
- .login-box {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     font-family: fantasy;
-     color: #4e6158;
-     font-size: 20px;
-     background-color: #B8D6C4;
-     width: 500px;
-     height: 350px;
-     border: 3px solid rgb(221, 233, 227);
-     padding: 50px;
-     margin: 20px;
-     border-radius: 20px;
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: fantasy;
+  color: #4e6158;
+  font-size: 20px;
+  background-color: #b8d6c4;
+  width: 500px;
+  height: 350px;
+  border: 3px solid rgb(221, 233, 227);
+  padding: 50px;
+  margin: 20px;
+  border-radius: 20px;
 }
- .username-wrapper, .password-wrapper{
-     margin-bottom: 15px;
+.username-wrapper,
+.password-wrapper {
+  margin-bottom: 15px;
 }
- .login-button {
-     background-color: #82a393;
-     color: #B8D6C4;
-     font-weight: bold;
-     font-family: fantasy;
-     border: none;
-     cursor: pointer;
-     border-radius: 10px;
-     font-size: 20px;
-     outline: none;
+.login-button {
+  background-color: #82a393;
+  color: #b8d6c4;
+  font-weight: bold;
+  font-family: fantasy;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 20px;
+  outline: none;
 }
 
 .login-button:hover {
@@ -114,11 +118,21 @@
 }
 .login-button:active {
   background-color: #8ab39c;
-  color:#B8D6C4;
+  color: #b8d6c4;
   transform: scale(0.95);
 }
 
- .login-button-wrapper{
-     display: flex;
-     justify-content: center;
+.login-button-wrapper {
+  display: flex;
+  justify-content: center;
 }
+
+.past-booking-card {
+  width: 200px;
+  height: 100px;
+  border: 3px solid rgb(221, 233, 227);
+  border-radius: 20px;
+  padding: 50px;
+  margin: 20px;
+}
+
