@@ -39,9 +39,12 @@ let upcomingCustomerRooms;
 const loginForm = document.querySelector(".login-form");
 const userName = document.querySelector("#username");
 const password = document.querySelector("#password");
-const modal = document.querySelector("#myModal");
 const findRoomButton = document.querySelector(".find-rooms-button"); //this is the button that opens the modal
-const span = document.querySelector(".close"); //this is the <span> element that closes the modal. When you click on the x button, it will exit
+const findRoomsModal = document.querySelector("#findRoomsModal");
+const closeButtons = document.querySelectorAll(".close"); //this is the <span> element that closes the modal. When you click on the x button, it will exit
+const successfulBookingModal = document.querySelector(
+  "#successfulBookingModal"
+);
 const findRoomForm = document.querySelector(".find-room-form");
 const date = document.querySelector(".date-input");
 const roomType = document.querySelector(".drop-down-menu");
@@ -59,17 +62,25 @@ const getAllData = () => {
 
 getAllData().then(() => {
   findRoomButton.onclick = function () {
-    modal.style.display = "block";
+    findRoomsModal.style.display = "block";
     renderRoomTypes(roomsData);
   };
 
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
+  //Since document.querySelectorAll returns a NodeList and not a single element, you need to loop through each of the elements in the NodeList to add an event listener to each one
+  closeButtons.forEach(function (span) {
+    span.addEventListener("click", function () {
+      findRoomsModal.style.display = "none";
+      successfulBookingModal.style.display = "none";
+    });
+  });
 
   window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    if (
+      event.target == findRoomsModal ||
+      event.target == successfulBookingModal
+    ) {
+      findRoomsModal.style.display = "none";
+      successfulBookingModal.style.display = "none";
     }
   };
 
@@ -81,7 +92,7 @@ getAllData().then(() => {
       bookingsData,
       roomsData
     ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
-    modal.style.display = "none";
+    findRoomsModal.style.display = "none";
     renderAvailableRooms(availableRooms);
     loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard
   });
@@ -91,11 +102,10 @@ getAllData().then(() => {
     if (event.target.classList.contains("bookButtons")) {
       const card = event.target.closest(".available-rooms-cards");
       const roomNumberElement = card.querySelector("p[id]"); //gives me the element
-      const roomId = parseInt(roomNumberElement.id)
-      let newdate = date.value
-      newdate = newdate.replace(/-/g, '/');
+      const roomId = parseInt(roomNumberElement.id);
+      let newdate = date.value;
+      newdate = newdate.replace(/-/g, "/");
       postNewBookedRoom(customerIdNumber, newdate, roomId);
-      
     }
   });
 
