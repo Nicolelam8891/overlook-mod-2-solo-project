@@ -58,12 +58,11 @@ const getAllData = () => {
       bookingsData = data[1].bookings;
       roomsData = data[2].rooms;
     }
-  );
-};
-
-
-export const setUpEventListeners = () =>{
-
+    );
+  };
+  
+  window.addEventListener("load", getAllData); 
+  
   findRoomButton.onclick = function () {
     findRoomsModal.style.display = "block";
     renderRoomTypes(roomsData);
@@ -76,6 +75,7 @@ export const setUpEventListeners = () =>{
       successfulBookingModal.style.display = "none";
     });
   });
+  
 
   window.onclick = function (event) {
     if (
@@ -163,9 +163,6 @@ export const setUpEventListeners = () =>{
       loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
     }
   });
-}
 
 
-getAllData().then(() => {
-  setUpEventListeners();
-});
+
