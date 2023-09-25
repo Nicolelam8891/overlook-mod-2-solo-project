@@ -61,8 +61,9 @@ const getAllData = () => {
   );
 };
 
-getAllData().then(() => {
-  
+
+export const setUpEventListeners = () =>{
+
   findRoomButton.onclick = function () {
     findRoomsModal.style.display = "block";
     renderRoomTypes(roomsData);
@@ -93,27 +94,45 @@ getAllData().then(() => {
       roomType.value,
       bookingsData,
       roomsData
-    ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
-    findRoomsModal.style.display = "none";
-    renderAvailableRooms(availableRooms);
-    loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard
-  });
-
-  availableRoomsBox.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (event.target.classList.contains("bookButtons")) {
-      const card = event.target.closest(".available-rooms-cards");
-      const roomNumberElement = card.querySelector("p[id]"); //gives me the element
-      const roomId = parseInt(roomNumberElement.id);
-      let newdate = date.value;
-      newdate = newdate.replace(/-/g, "/");
-      postNewBookedRoom(customerIdNumber, newdate, roomId);
-      successfulBookingModal.style.display = "block"; //shows the modal
+      ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
+      findRoomsModal.style.display = "none";
+      renderAvailableRooms(availableRooms);
+      loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard
+    });
+    
+    availableRoomsBox.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (event.target.classList.contains("bookButtons")) {
+        const card = event.target.closest(".available-rooms-cards");
+        const roomNumberElement = card.querySelector("p[id]"); //gives me the element
+        const roomId = parseInt(roomNumberElement.id);
+        let newdate = date.value;
+        newdate = newdate.replace(/-/g, "/");
+        postNewBookedRoom(customerIdNumber, newdate, roomId)
+        .then(() => getAllData())  // Refresh the data after POST
+        .then(() => {
+          console.log("bookingsData:=====", bookingsData); //checked and it is logged.
+          successfulBookingModal.style.display = "block"; //shows the modal
+        });
     }
   });
 
   successButton.addEventListener("click", (event) => {
     event.preventDefault();
+    allCustomerBookings = getAllCustomerBookings(
+      customerIdNumber,
+      bookingsData
+    );
+    pastCustomerRooms = getPastOrUpcomingCustomerBookings(
+      "past",
+      allCustomerBookings,
+      roomsData
+    );
+    upcomingCustomerRooms = getPastOrUpcomingCustomerBookings(
+      "upcoming",
+      allCustomerBookings,
+      roomsData
+    );
     loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
     successfulBookingModal.style.display = "none";
   })
@@ -144,4 +163,9 @@ getAllData().then(() => {
       loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
     }
   });
+}
+
+
+getAllData().then(() => {
+  setUpEventListeners();
 });
