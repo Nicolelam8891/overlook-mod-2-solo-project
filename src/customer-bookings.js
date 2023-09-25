@@ -56,6 +56,10 @@ export const getPastOrUpcomingCustomerBookings = (
   }
 };
 
+/* new Date(): This creates a new Date object with the current date and time.
+.toISOString(): Converts the date to a string in the simplified extended ISO format (ISO 8601), which looks like "2023-09-24T14:21:00.000Z".
+.slice(0, 10): Extracts the first 10 characters of the string, which gives you the date portion in the format "YYYY-MM-DD".
+.replace(/-/g, "/"): This replaces all occurrences of the hyphen ("-") with a forward slash ("/") */
 export const getSelectedAvailableRooms = (
   dateSelected,
   roomSelected,
@@ -65,9 +69,9 @@ export const getSelectedAvailableRooms = (
   const formattedDateSelected = dateSelected.replace(/-/g, "/");
   //Need the date() constructor to create date objects. When it is called as a function, it retuns a string representing the current time.
   //need the toISOString() to get it to the date in YYYY-MM-DD format. Need to use slice method to extract only the first 10 characters, which corresponds to just the date portion.
-  const currentDate = new Date().toISOString().slice(0, 10);
+  const currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, "/");
   //if statements starts here first so the customer can fix the error prior to more code being executed, like in the elevator unit test.
-  if (dateSelected < currentDate) {
+  if (formattedDateSelected < currentDate) {
     return `You have selected a date from the past, please select a date in the future.`;
   }
   //filter: this will return an array of booking objects of all unavail dates
@@ -76,11 +80,12 @@ export const getSelectedAvailableRooms = (
     .filter((booking) => booking.date === formattedDateSelected)
     .map((booking) => booking.roomNumber);
   //this function will return an array of objects of all the avail rooms.
-  const getAvailableRooms = roomsData.filter(
-    (room) =>
-      !getUnavailableDateAndRoomNumber.includes(room.number) &&
-      room.roomType === roomSelected
-  );
+  const getAvailableRooms = roomsData.filter((room) => {
+    if (roomSelected === "any") {
+      return !getUnavailableDateAndRoomNumber.includes(room.number); //this gives ALL avail rooms
+    }
+      !getUnavailableDateAndRoomNumber.includes(room.number) && room.roomType === roomSelected //will give rooms contingent on what customer selects
+  });
   const apologyMessage =
     "Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search.";
   if (getAvailableRooms.length === 0) {
