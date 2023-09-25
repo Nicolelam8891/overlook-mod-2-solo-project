@@ -95,6 +95,7 @@ export const setUpEventListeners = () =>{
       bookingsData,
       roomsData
       ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
+      console.log("availableRooms:=====", availableRooms);
       findRoomsModal.style.display = "none";
       renderAvailableRooms(availableRooms);
       loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard

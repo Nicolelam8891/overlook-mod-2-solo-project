@@ -70,7 +70,7 @@ export const renderAvailableRooms = (availableRooms) => {
     availableRoomsBox.innerHTML += `<div class="available-rooms-cards">
     <p>Room number: ${room.number} </p>
     <p>Room type: ${room.roomType} </p>
-    <p>Cost per night: ${room.costPerNight}</p>
+    <p>Cost per night: $${room.costPerNight}</p>
     <p>Bed Type: ${room.bedSize}</p>
     <p>Number of beds: ${room.numBeds}</p>
     <button class="bookButtons" id="${room.number}"> BOOK </button>
