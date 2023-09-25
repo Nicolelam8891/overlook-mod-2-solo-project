@@ -1,12 +1,13 @@
 
 import { postNewBookedRoom } from "./apiCalls"
-import { getAllCustomerBookings } from "./customer-bookings"
+import { getAllCustomerBookings, getAllRoomTypes } from "./customer-bookings"
 
-
-const dashboardPage = document.querySelector(".dashboard-page");
+/* QuerySelectors here */ 
 const loginPage = document.querySelector(".login-page");
-const pastCustomerBookings = document.querySelector("#past-customer-bookings")
-const futureCustomerBookings = document.querySelector("#future-customer-bookings")
+const dashboardPage = document.querySelector(".dashboard-page");
+const pastCustomerBookings = document.querySelector("#past-customer-bookings");
+const futureCustomerBookings = document.querySelector("#future-customer-bookings");
+const dropDownMenu = document.querySelector(".drop-down-menu");
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
   dashboardPage.classList.remove("hidden")
@@ -39,12 +40,21 @@ export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCu
   </div>
     `
   });
-
-
-
-
-
-
 }
+
+export const renderRoomTypes = (roomsData) => {
+  const allRoomTypes = getAllRoomTypes(roomsData)
+  console.log("allRoomTypes:=====", allRoomTypes);
+  allRoomTypes.forEach((room) => {
+    dropDownMenu.innerHTML +=
+    `<option value="${room}">${room}</option>
+    `
+  })  
+}
+
+
+
+
+
 
 

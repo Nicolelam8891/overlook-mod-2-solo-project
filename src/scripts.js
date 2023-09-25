@@ -11,10 +11,12 @@ import "./images/sage1.png";
 import {
   getAllCustomerBookings,
   getPastOrUpcomingCustomerBookings,
+  getAllRoomTypes,
+  getSelectedAvailableRooms,
 } from "./customer-bookings";
 //import { loadHomePage } from './domUpdates';
 import { handleLogin, checkValidCustomerLogin } from "./login";
-import { loadDashboardPage } from "./domUpdates";
+import { loadDashboardPage, renderRoomTypes } from "./domUpdates";
 
 let customersData;
 let bookingsData;
@@ -27,6 +29,12 @@ let upcomingCustomerRooms;
 const loginForm = document.querySelector(".login-form");
 const userName = document.querySelector("#username");
 const password = document.querySelector("#password");
+const modal = document.querySelector("#myModal");
+const findRoomButton = document.querySelector(".find-rooms-button"); //this is the button that opens the modal
+const span = document.querySelector(".close"); //this is the <span> element that closes the modal. When you click on the x button, it will exit
+const findRoomForm = document.querySelector(".find-room-form");
+const date = document.querySelector(".date-input");
+const roomType = document.querySelector(".drop-down-menu");
 
 const getAllData = () => {
   return Promise.all([getCustomers(), getBookings(), getRooms()]).then(
@@ -39,6 +47,29 @@ const getAllData = () => {
 };
 
 getAllData().then(() => {
+
+  findRoomButton.onclick = function() {
+    modal.style.display = "block";
+    renderRoomTypes(roomsData);
+  }
+  
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  findRoomForm.addEventListener("submit",(event) => {
+    event.preventDefault();
+    const availableRooms = getSelectedAvailableRooms(date.value, roomType.value, bookingsData, roomsData) //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
+    modal.style.display = "none";
+    
+  })  
+
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
     customerIdNumber = checkValidCustomerLogin(userName.value);
