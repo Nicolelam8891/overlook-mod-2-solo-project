@@ -10,12 +10,18 @@ const futureCustomerBookings = document.querySelector(
 );
 const dropDownMenu = document.querySelector(".drop-down-menu");
 const availableRoomsBox = document.querySelector(".available-rooms-box");
+const availableRoomsPage = document.querySelector(".available-rooms-page")
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
-  dashboardPage.classList.remove("hidden");
-  loginPage.classList.add("hidden");
+  dashboardPage.classList.remove("hidden"); //will unhide the dashboard 
+  loginPage.classList.add("hidden"); //will hide the login page
   renderPastAndUpcomingBookingsCards(pastCustomerRooms, upcomingCustomerRooms);
 };
+
+export const loadAvailableRoomsPage = () => {
+  dashboardPage.classList.add("hidden"); //will hide the dashboard page
+  availableRoomsPage.classList.remove("hidden"); //will unhide avail rooms page
+}
 
 export const renderPastAndUpcomingBookingsCards = (
   pastCustomerRooms,
