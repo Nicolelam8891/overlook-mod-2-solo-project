@@ -149,7 +149,7 @@ button:active {
 }
 
 .past-booking-cards,
-.future-booking-cards, .available-rooms-cards {
+.upcoming-booking-cards, .available-rooms-cards {
   display: flex;
   flex-direction: column;
   align-items: left;

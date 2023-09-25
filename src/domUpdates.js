@@ -5,15 +5,15 @@ import { getAllCustomerBookings, getAllRoomTypes } from "./customer-bookings";
 const loginPage = document.querySelector(".login-page");
 const dashboardPage = document.querySelector(".dashboard-page");
 const pastCustomerBookings = document.querySelector("#past-customer-bookings");
-const futureCustomerBookings = document.querySelector(
-  "#future-customer-bookings"
+const upcomingCustomerBookings = document.querySelector(
+  "#upcoming-customer-bookings"
 );
 const dropDownMenu = document.querySelector(".drop-down-menu");
 const availableRoomsBox = document.querySelector(".available-rooms-box");
-const availableRoomsPage = document.querySelector(".available-rooms-page")
+const availableRoomsPage = document.querySelector(".available-rooms-page");
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
-  dashboardPage.classList.remove("hidden"); //will unhide the dashboard 
+  dashboardPage.classList.remove("hidden"); //will unhide the dashboard
   loginPage.classList.add("hidden"); //will hide the login page
   availableRoomsPage.classList.add("hidden"); //will hide the avail rooms page
   renderPastAndUpcomingBookingsCards(pastCustomerRooms, upcomingCustomerRooms);
@@ -22,12 +22,13 @@ export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
 export const loadAvailableRoomsPage = () => {
   dashboardPage.classList.add("hidden"); //will hide the dashboard page
   availableRoomsPage.classList.remove("hidden"); //will unhide avail rooms page
-}
+};
 
 export const renderPastAndUpcomingBookingsCards = (
   pastCustomerRooms,
   upcomingCustomerRooms
 ) => {
+  pastCustomerBookings.innerHTML = "";
   pastCustomerRooms.forEach((room) => {
     pastCustomerBookings.innerHTML +=
       //need to add card after card
@@ -41,8 +42,9 @@ export const renderPastAndUpcomingBookingsCards = (
     `;
   });
 
+  upcomingCustomerBookings.innerHTML = "";
   upcomingCustomerRooms.forEach((room) => {
-    futureCustomerBookings.innerHTML += `<div class="future-booking-cards">
+    upcomingCustomerBookings.innerHTML += `<div class="upcoming-booking-cards">
     <p>Room number: ${room.number} </p>
     <p>Room type: ${room.roomType} </p>
     <p>Bed type: ${room.bedSize} </p>
