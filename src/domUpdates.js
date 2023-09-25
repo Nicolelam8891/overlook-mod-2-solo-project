@@ -15,6 +15,7 @@ const availableRoomsPage = document.querySelector(".available-rooms-page")
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
   dashboardPage.classList.remove("hidden"); //will unhide the dashboard 
   loginPage.classList.add("hidden"); //will hide the login page
+  availableRoomsPage.classList.add("hidden"); //will hide the avail rooms page
   renderPastAndUpcomingBookingsCards(pastCustomerRooms, upcomingCustomerRooms);
 };
 
