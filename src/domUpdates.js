@@ -1,14 +1,13 @@
 
 import { postNewBookedRoom } from "./apiCalls"
-import { getAllCustomerBookings } from "./customer-bookings"
+import { getAllCustomerBookings, getAllRoomTypes } from "./customer-bookings"
 
+/* QuerySelectors here */ 
 const loginPage = document.querySelector(".login-page");
 const dashboardPage = document.querySelector(".dashboard-page");
-const pastCustomerBookings = document.querySelector("#past-customer-bookings")
-const futureCustomerBookings = document.querySelector("#future-customer-bookings")
-const modal = document.querySelector("#myModal");
-const findRoomButton = document.querySelector(".find-rooms-button") //this is the button that opens the modal
-const span = document.querySelector(".close"); //this is the <span> element that closes the modal. When you click on the x button, it will exit
+const pastCustomerBookings = document.querySelector("#past-customer-bookings");
+const futureCustomerBookings = document.querySelector("#future-customer-bookings");
+const dropDownMenu = document.querySelector(".drop-down-menu");
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
   dashboardPage.classList.remove("hidden")
@@ -43,21 +42,15 @@ export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCu
   });
 }
 
-/* event listeners here */ 
-findRoomButton.onclick = function() {
-  modal.style.display = "block";
+export const renderRoomTypes = (roomsData) => {
+  const allRoomTypes = getAllRoomTypes(roomsData)
+  console.log("allRoomTypes:=====", allRoomTypes);
+  allRoomTypes.forEach((room) => {
+    dropDownMenu.innerHTML +=
+    `<option value="${room}">${room}</option>
+    `
+  })  
 }
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
 
 
 

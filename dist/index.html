@@ -35,7 +35,7 @@
         </div>
         <div class="booking-scroll-box" id="future-customer-bookings">
           <h2>Upcoming bookings</h2>
-           <!-- future booking cards go here -->
+<!-- future booking cards go here -->
         </div>
       </section>
     </section>
@@ -81,6 +81,19 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
+    <p>Please select a date and room type of your choice!</p>
+        <form class="find-room-form">
+
+          <label for="date">Date:</label>
+          <input type="date" class="date-input">
+          <label for="type">Room Type:</label>
+          <select class="drop-down-menu">
+            <option value="any">any</option>
+<!-- room type goes here -->
+          </select>
+
+          <button type="submit" class="find-room-select-button">Select</button>
+        </form>
   </div>
 </div>
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->

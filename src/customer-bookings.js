@@ -81,7 +81,7 @@ export const getSelectedAvailableRooms = (dateSelected, roomSelected, bookingsDa
 //getAvailableRooms should return an array of elements of the avail rooms. 
 //if there are NO elements in the array, return "Sage Serenity Hotel deeply apologizes for the inconvience. The room you selected is not available on the date you selectedm please adjust your search."
 };
-console.log(getSelectedAvailableRooms("2023/02/16", "residential suite", bookingsData, roomsData))
+// console.log(getSelectedAvailableRooms("2023/02/16", "residential suite", bookingsData, roomsData))
 
 //customer should be able to select a room for booking 
 //when customer clicks on the book now button, 
@@ -98,4 +98,3 @@ export const getAllRoomTypes = (roomsData) => {
     return uniqueRoomTypes
 } 
 
-getAllRoomTypes(roomsData)
