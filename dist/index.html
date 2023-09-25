@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Sage Serenity Hotel</title>
   </head>
   <body>
@@ -31,7 +30,7 @@
       <section class="booking-wrapper">
         <div class="booking-scroll-box" id="past-customer-bookings">
           <h2>Past bookings</h2>
-        <!-- past booking cards go here -->
+<!-- past booking cards go here -->
         </div>
         <div class="booking-scroll-box" id="future-customer-bookings">
           <h2>Upcoming bookings</h2>
@@ -83,7 +82,6 @@
     <span class="close">&times;</span>
     <p>Please select a date and room type of your choice!</p>
         <form class="find-room-form">
-
           <label for="date">Date:</label>
           <input type="date" class="date-input">
           <label for="type">Room Type:</label>
@@ -91,11 +89,19 @@
             <option value="any">any</option>
 <!-- room type goes here -->
           </select>
-
           <button type="submit" class="find-room-select-button">Select</button>
         </form>
   </div>
 </div>
+<!-- available rooms page -->
+<section class="available-rooms-page">
+  <section class="available-rooms-wrapper">
+    <div class="available-rooms-box">
+      <h2>These are the available rooms!</h2>
+      <p><em>Please choose a room of your choice!</em></p>
+    </div>
+  </section>
+</section>
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>
   </body>

@@ -99,6 +99,7 @@ button:active {
   justify-content: center;
   margin-top: 150px;
 }
+
 .login-box {
   display: flex;
   flex-direction: column;
@@ -115,10 +116,12 @@ button:active {
   margin: 20px;
   border-radius: 20px;
 }
+
 .username-wrapper,
 .password-wrapper {
   margin-bottom: 15px;
 }
+
 .login-button {
   background-color: #82a393;
   color: #b8d6c4;
@@ -145,7 +148,8 @@ button:active {
   justify-content: center;
 }
 
-.past-booking-cards, .future-booking-cards {
+.past-booking-cards,
+.future-booking-cards {
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -159,37 +163,70 @@ button:active {
 }
 
 .modal {
-     display: none; /* Hidden by default */
-     position: fixed; /* Stay in place */
-     z-index: 1; /* Sit on top */
-     left: 0;
-     top: 0;
-     width: 100%; /* Full width */
-     height: 100%; /* Full height */
-     overflow: auto; /* Enable scroll if needed */
-     background-color: rgb(0,0,0); /* Fallback color */
-     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-   }
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 
-   /* Modal Content/Box */
+/* Modal Content/Box */
 .modal-content {
-     background-color: #ddf4e9;
-     margin: 15% auto; /* 15% from the top and centered */
-     padding: 20px;
-     border: 1px solid #888;
-     width: 50%; /* Could be more or less, depending on screen size */
-     height: 60%;
-   }
-   /* The Close Button */
-   .close {
-     color: #aaa;
-     float: right;
-     font-size: 28px;
-     font-weight: bold;
-   }
-   .close:hover,
-   .close:focus {
-     color: black;
-     text-decoration: none;
-     cursor: pointer;
-   }
+  background-color: #ddf4e9;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  height: 60%;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.available-rooms-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.available-rooms-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #b8d6c4;
+  width: 500px;
+  height: 600px;
+  border: 3px solid rgb(221, 233, 227);
+  padding: 50px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.available-rooms-box::-webkit-scrollbar {
+  width: 10px;
+}
+.available-rooms-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.available-rooms-box-box::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 171, 127, 0.5);
+  border-radius: 5px;
+}

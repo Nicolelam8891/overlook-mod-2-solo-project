@@ -65,12 +65,9 @@ getAllData().then(() => {
 
   findRoomForm.addEventListener("submit",(event) => {
     event.preventDefault();
-    const availableRooms = getSelectedAvailableRooms(date.value, roomType.value, bookingsData, roomsData)
+    const availableRooms = getSelectedAvailableRooms(date.value, roomType.value, bookingsData, roomsData) //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
     modal.style.display = "none";
-    console.log("roomType:=====", roomType);
-    console.log("date:=====", date);
-    console.log("availableRooms:=====", availableRooms);
-
+    
   })  
 
   loginForm.addEventListener("submit", (event) => {
