@@ -56,6 +56,7 @@ export const renderPastAndUpcomingBookingsCards = (
 };
 
 export const renderRoomTypes = (roomsData) => {
+  dropDownMenu.innerHTML = "";
   const allRoomTypes = getAllRoomTypes(roomsData);
   allRoomTypes.forEach((room) => {
     dropDownMenu.innerHTML += `<option value="${room}">${room}</option>
