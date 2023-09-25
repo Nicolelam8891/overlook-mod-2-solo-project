@@ -56,6 +56,7 @@ export const renderPastAndUpcomingBookingsCards = (
 };
 
 export const renderRoomTypes = (roomsData) => {
+  dropDownMenu.innerHTML = "";
   const allRoomTypes = getAllRoomTypes(roomsData);
   allRoomTypes.forEach((room) => {
     dropDownMenu.innerHTML += `<option value="${room}">${room}</option>
@@ -64,17 +65,16 @@ export const renderRoomTypes = (roomsData) => {
 };
 
 export const renderAvailableRooms = (availableRooms) => {
-  let id = 0;
+  availableRoomsBox.innerHTML = "<h2>These are the available rooms!</h2> <p><em>Please choose a room of your choice!</em></p>";
   availableRooms.forEach((room) => {
     availableRoomsBox.innerHTML += `<div class="available-rooms-cards">
-    <p id="${room.number}">Room number: ${room.number} </p>
+    <p>Room number: ${room.number} </p>
     <p>Room type: ${room.roomType} </p>
     <p>Cost per night: ${room.costPerNight}</p>
     <p>Bed Type: ${room.bedSize}</p>
     <p>Number of beds: ${room.numBeds}</p>
-    <button class="bookButtons"> BOOK </button>
+    <button class="bookButtons" id="${room.number}"> BOOK </button>
   </div>
     `;
-    id++;
   });
 };

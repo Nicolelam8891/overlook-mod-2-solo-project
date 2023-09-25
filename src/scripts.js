@@ -103,12 +103,9 @@ export const setUpEventListeners = () =>{
     availableRoomsBox.addEventListener("click", (event) => {
       event.preventDefault();
       if (event.target.classList.contains("bookButtons")) {
-        const card = event.target.closest(".available-rooms-cards");
-        const roomNumberElement = card.querySelector("p[id]"); //gives me the element
-        const roomId = parseInt(roomNumberElement.id);
-        let newdate = date.value;
-        newdate = newdate.replace(/-/g, "/");
-        postNewBookedRoom(customerIdNumber, newdate, roomId)
+        const roomId = parseInt(event.target.id);
+        let formattedDate = date.value.replace(/-/g, "/");
+        postNewBookedRoom(customerIdNumber, formattedDate, roomId)
         .then(() => getAllData())  // Refresh the data after POST
         .then(() => {
           console.log("bookingsData:=====", bookingsData); //checked and it is logged.
