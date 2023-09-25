@@ -1,5 +1,6 @@
 import { postNewBookedRoom } from "./apiCalls";
 import { getAllCustomerBookings, getAllRoomTypes } from "./customer-bookings";
+import { getCustomerRoomNumbers, calculateBookingsSum } from "./calculations";
 
 // Get today's date, prevent customer handle error
 const today = new Date();
@@ -23,13 +24,15 @@ const dropDownMenu = document.querySelector(".drop-down-menu");
 const availableRoomsBox = document.querySelector(".available-rooms-box");
 const availableRoomsPage = document.querySelector(".available-rooms-page");
 const outerMainNav = document.querySelector(".outer-main-nav")
+const totalSpentTitle = document.querySelector(".total-spent-title")
 
-export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
+export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData) => {
   dashboardPage.classList.remove("hidden"); //will unhide the dashboard
   loginPage.classList.add("hidden"); //will hide the login page
   availableRoomsPage.classList.add("hidden"); //will hide the avail rooms page
   outerMainNav.classList.remove("hidden");
   renderPastAndUpcomingBookingsCards(pastCustomerRooms, upcomingCustomerRooms);
+  displayTotalSpent(allCustomerBookings, roomsData)
 };
 
 export const loadAvailableRoomsPage = () => {
@@ -38,10 +41,7 @@ export const loadAvailableRoomsPage = () => {
 
 };
 
-export const renderPastAndUpcomingBookingsCards = (
-  pastCustomerRooms,
-  upcomingCustomerRooms
-) => {
+export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCustomerRooms) => {
   pastCustomerBookings.innerHTML = "";
   pastCustomerRooms.forEach((room) => {
     pastCustomerBookings.innerHTML +=
@@ -95,3 +95,9 @@ export const renderAvailableRooms = (availableRooms) => {
     });
   }
 };
+
+export const displayTotalSpent = (allCustomerBookings, roomsData) => {
+  const roomNumbers = getCustomerRoomNumbers(allCustomerBookings);
+  const totalSpent = calculateBookingsSum(roomNumbers, roomsData);
+  totalSpentTitle.innerText = `Total Spent:  $ ${totalSpent}`
+}
