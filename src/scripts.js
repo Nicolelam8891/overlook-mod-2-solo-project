@@ -49,6 +49,7 @@ const findRoomForm = document.querySelector(".find-room-form");
 const date = document.querySelector(".date-input");
 const roomType = document.querySelector(".drop-down-menu");
 const availableRoomsBox = document.querySelector(".available-rooms-box");
+const successButton = document.querySelector(".success-button"); 
 
 const getAllData = () => {
   return Promise.all([getCustomers(), getBookings(), getRooms()]).then(
@@ -61,6 +62,7 @@ const getAllData = () => {
 };
 
 getAllData().then(() => {
+  
   findRoomButton.onclick = function () {
     findRoomsModal.style.display = "block";
     renderRoomTypes(roomsData);
@@ -106,8 +108,15 @@ getAllData().then(() => {
       let newdate = date.value;
       newdate = newdate.replace(/-/g, "/");
       postNewBookedRoom(customerIdNumber, newdate, roomId);
+      successfulBookingModal.style.display = "block"; //shows the modal
     }
   });
+
+  successButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
+    successfulBookingModal.style.display = "none";
+  })
 
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
