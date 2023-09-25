@@ -11,10 +11,12 @@ h1,
   color: #333e39;
   font-family: fantasy;
 }
-h2 {
+h2,
+.nav-right {
   color: #333e39;
   font-family: fantasy;
   font-size: xx-large;
+  margin: auto;
 }
 body {
   min-height: 100vh;
@@ -66,10 +68,11 @@ button:active {
 }
 .main-nav {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-left: 50px;
   margin-top: 25px;
 }
+
 .booking-wrapper {
   display: flex;
   justify-content: center;
