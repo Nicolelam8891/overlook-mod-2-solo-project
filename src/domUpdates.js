@@ -65,7 +65,7 @@ export const renderRoomTypes = (roomsData) => {
 };
 
 export const renderAvailableRooms = (availableRooms) => {
-  availableRoomsBox.innerHTML = "";
+  availableRoomsBox.innerHTML = "<h2>These are the available rooms!</h2> <p><em>Please choose a room of your choice!</em></p>";
   availableRooms.forEach((room) => {
     availableRoomsBox.innerHTML += `<div class="available-rooms-cards">
     <p>Room number: ${room.number} </p>

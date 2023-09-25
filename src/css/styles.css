@@ -8,7 +8,13 @@
 
 h1,
 .sage-serenity-tagline {
-  color: #4e6158;
+  color: #333e39;
+  font-family: fantasy;
+}
+h2 {
+  color: #333e39;
+  font-family: fantasy;
+  font-size: xx-large;
 }
 body {
   min-height: 100vh;
@@ -69,19 +75,41 @@ button:active {
   justify-content: center;
 }
 
-.booking-scroll-box {
+.outer-booking-box {
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
   background-color: #b8d6c4;
-  width: 300px;
-  height: 600px;
+  width: 500px;
   border: 3px solid rgb(221, 233, 227);
   padding: 50px;
   margin: 20px;
   border-radius: 20px;
+}
+
+.bookings-title {
+  width: 200px;
+  height: 200px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}
+
+.booking-scroll-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #b8d6c4;
+  width: 400px;
+  height: 600px;
+  border: 3px solid rgb(131, 165, 148);
+  padding: 50px;
+  margin: 20px;
+  border-radius: 20px;
+  flex-wrap: wrap;
 }
 .booking-scroll-box::-webkit-scrollbar {
   width: 10px;
@@ -149,17 +177,22 @@ button:active {
 }
 
 .past-booking-cards,
-.upcoming-booking-cards, .available-rooms-cards {
+.upcoming-booking-cards,
+.available-rooms-cards {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   width: 250px;
   height: 200px;
-  border: 3px solid rgb(221, 233, 227);
+  color: #212825;
+  font-family: fantasy;
+  font-size: larger;
+  border: 3px solid rgb(131, 165, 148);
   border-radius: 20px;
   padding: 20px;
   padding-bottom: 80px;
   margin: 20px;
+  line-height: 1;
 }
 
 .modal {
@@ -230,4 +263,3 @@ button:active {
   background-color: rgba(107, 171, 127, 0.5);
   border-radius: 5px;
 }
-
