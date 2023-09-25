@@ -45,11 +45,12 @@ const closeButtons = document.querySelectorAll(".close"); //this is the <span> e
 const successfulBookingModal = document.querySelector(
   "#successfulBookingModal"
 );
+const dashboardButton = document.querySelector(".dashboard-button")
 const findRoomForm = document.querySelector(".find-room-form");
 const date = document.querySelector(".date-input");
 const roomType = document.querySelector(".drop-down-menu");
 const availableRoomsBox = document.querySelector(".available-rooms-box");
-const successButton = document.querySelector(".success-button"); 
+const successButton = document.querySelector(".success-button");
 
 const getAllData = () => {
   return Promise.all([getCustomers(), getBookings(), getRooms()]).then(
@@ -58,67 +59,94 @@ const getAllData = () => {
       bookingsData = data[1].bookings;
       roomsData = data[2].rooms;
     }
-    );
-  };
-  
-  window.addEventListener("load", getAllData); 
-  
-  findRoomButton.onclick = function () {
-    findRoomsModal.style.display = "block";
-    renderRoomTypes(roomsData);
-  };
+  );
+};
 
-  //Since document.querySelectorAll returns a NodeList and not a single element, you need to loop through each of the elements in the NodeList to add an event listener to each one
-  closeButtons.forEach(function (span) {
-    span.addEventListener("click", function () {
-      findRoomsModal.style.display = "none";
-      successfulBookingModal.style.display = "none";
-    });
+window.addEventListener("load", getAllData);
+
+dashboardButton.onclick = function () {
+  loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
+}
+
+findRoomButton.onclick = function () {
+  findRoomsModal.style.display = "block";
+  renderRoomTypes(roomsData);
+};
+
+//Since document.querySelectorAll returns a NodeList and not a single element, you need to loop through each of the elements in the NodeList to add an event listener to each one
+closeButtons.forEach(function (span) {
+  span.addEventListener("click", function () {
+    findRoomsModal.style.display = "none";
+    successfulBookingModal.style.display = "none";
   });
-  
+});
 
-  window.onclick = function (event) {
-    if (
-      event.target == findRoomsModal ||
-      event.target == successfulBookingModal
-    ) {
-      findRoomsModal.style.display = "none";
-      successfulBookingModal.style.display = "none";
-    }
-  };
+window.onclick = function (event) {
+  if (
+    event.target == findRoomsModal ||
+    event.target == successfulBookingModal
+  ) {
+    findRoomsModal.style.display = "none";
+    successfulBookingModal.style.display = "none";
+  }
+};
 
-  findRoomForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const availableRooms = getSelectedAvailableRooms(
-      date.value,
-      roomType.value,
-      bookingsData,
-      roomsData
-      ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
-      console.log("date.value:=====", typeof date.value);
-      console.log("date.value:=====", date.value);
-      console.log("availableRooms:=====", availableRooms);
-      findRoomsModal.style.display = "none";
-      renderAvailableRooms(availableRooms);
-      loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard
-    });
-    
-    availableRoomsBox.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (event.target.classList.contains("bookButtons")) {
-        const roomId = parseInt(event.target.id);
-        let formattedDate = date.value.replace(/-/g, "/");
-        postNewBookedRoom(customerIdNumber, formattedDate, roomId)
-        .then(() => getAllData())  // Refresh the data after POST
-        .then(() => {
-          console.log("bookingsData:=====", bookingsData); //checked and it is logged.
-          successfulBookingModal.style.display = "block"; //shows the modal
-        });
-    }
-  });
+findRoomForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const availableRooms = getSelectedAvailableRooms(
+    date.value,
+    roomType.value,
+    bookingsData,
+    roomsData
+  ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
+  console.log("date.value:=====", typeof date.value);
+  console.log("date.value:=====", date.value);
+  console.log("availableRooms:=====", availableRooms);
+  findRoomsModal.style.display = "none";
+  renderAvailableRooms(availableRooms);
+  loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard
+});
 
-  successButton.addEventListener("click", (event) => {
-    event.preventDefault();
+availableRoomsBox.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.classList.contains("bookButtons")) {
+    const roomId = parseInt(event.target.id);
+    let formattedDate = date.value.replace(/-/g, "/");
+    postNewBookedRoom(customerIdNumber, formattedDate, roomId)
+      .then(() => getAllData()) // Refresh the data after POST
+      .then(() => {
+        console.log("bookingsData:=====", bookingsData); //checked and it is logged.
+        successfulBookingModal.style.display = "block"; //shows the modal
+      });
+  }
+});
+
+successButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  allCustomerBookings = getAllCustomerBookings(customerIdNumber, bookingsData);
+  pastCustomerRooms = getPastOrUpcomingCustomerBookings(
+    "past",
+    allCustomerBookings,
+    roomsData
+  );
+  upcomingCustomerRooms = getPastOrUpcomingCustomerBookings(
+    "upcoming",
+    allCustomerBookings,
+    roomsData
+  );
+  loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
+  successfulBookingModal.style.display = "none";
+});
+
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  customerIdNumber = checkValidCustomerLogin(userName.value);
+  // console.log("customerIdNumber:=====", customerIdNumber);
+  const successfulLogin = handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
+  // console.log("successfulLogin:=====", successfulLogin);
+  if (successfulLogin === true && Number.isInteger(customerIdNumber)) {
+    //isInteger will check if value pass is an integer or not.
+    //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
     allCustomerBookings = getAllCustomerBookings(
       customerIdNumber,
       bookingsData
@@ -134,35 +162,5 @@ const getAllData = () => {
       roomsData
     );
     loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
-    successfulBookingModal.style.display = "none";
-  })
-
-  loginForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    customerIdNumber = checkValidCustomerLogin(userName.value);
-    // console.log("customerIdNumber:=====", customerIdNumber);
-    const successfulLogin = handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
-    // console.log("successfulLogin:=====", successfulLogin);
-    if (successfulLogin === true && Number.isInteger(customerIdNumber)) {
-      //isInteger will check if value pass is an integer or not.
-      //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
-      allCustomerBookings = getAllCustomerBookings(
-        customerIdNumber,
-        bookingsData
-      );
-      pastCustomerRooms = getPastOrUpcomingCustomerBookings(
-        "past",
-        allCustomerBookings,
-        roomsData
-      );
-      upcomingCustomerRooms = getPastOrUpcomingCustomerBookings(
-        "upcoming",
-        allCustomerBookings,
-        roomsData
-      );
-      loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
-    }
-  });
-
-
-
+  }
+});
