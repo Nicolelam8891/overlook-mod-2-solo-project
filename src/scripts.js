@@ -25,6 +25,7 @@ import {
   loadDashboardPage,
   renderRoomTypes,
   renderAvailableRooms,
+  loadAvailableRoomsPage,
 } from "./domUpdates";
 
 let customersData;
@@ -82,6 +83,7 @@ getAllData().then(() => {
     ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
     modal.style.display = "none";
     renderAvailableRooms(availableRooms);
+    loadAvailableRoomsPage(); //when you click the find room button, it will hide the dashboard
   });
 
   availableRoomsBox.addEventListener("click", (event) => {
@@ -93,6 +95,7 @@ getAllData().then(() => {
       let newdate = date.value
       newdate = newdate.replace(/-/g, '/');
       postNewBookedRoom(customerIdNumber, newdate, roomId);
+      
     }
   });
 
@@ -119,8 +122,6 @@ getAllData().then(() => {
         allCustomerBookings,
         roomsData
       );
-      console.log("upcomingCustomerRooms:=====", upcomingCustomerRooms);
-
       loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
     }
   });
