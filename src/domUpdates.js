@@ -65,17 +65,16 @@ export const renderRoomTypes = (roomsData) => {
 };
 
 export const renderAvailableRooms = (availableRooms) => {
-  let id = 0;
+  availableRoomsBox.innerHTML = "";
   availableRooms.forEach((room) => {
     availableRoomsBox.innerHTML += `<div class="available-rooms-cards">
-    <p id="${room.number}">Room number: ${room.number} </p>
+    <p>Room number: ${room.number} </p>
     <p>Room type: ${room.roomType} </p>
     <p>Cost per night: ${room.costPerNight}</p>
     <p>Bed Type: ${room.bedSize}</p>
     <p>Number of beds: ${room.numBeds}</p>
-    <button class="bookButtons"> BOOK </button>
+    <button class="bookButtons" id="${room.number}"> BOOK </button>
   </div>
     `;
-    id++;
   });
 };
