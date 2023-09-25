@@ -8,6 +8,7 @@ const dashboardPage = document.querySelector(".dashboard-page");
 const pastCustomerBookings = document.querySelector("#past-customer-bookings");
 const futureCustomerBookings = document.querySelector("#future-customer-bookings");
 const dropDownMenu = document.querySelector(".drop-down-menu");
+const availableRoomsBox = document.querySelector(".available-rooms-box")
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms) => {
   dashboardPage.classList.remove("hidden")
@@ -44,7 +45,6 @@ export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCu
 
 export const renderRoomTypes = (roomsData) => {
   const allRoomTypes = getAllRoomTypes(roomsData)
-  console.log("allRoomTypes:=====", allRoomTypes);
   allRoomTypes.forEach((room) => {
     dropDownMenu.innerHTML +=
     `<option value="${room}">${room}</option>
@@ -52,6 +52,22 @@ export const renderRoomTypes = (roomsData) => {
   })  
 }
 
+export const renderAvailableRooms = (availableRooms) => {
+  let id = 0
+  availableRooms.forEach((room) => {
+    availableRoomsBox.innerHTML +=
+    `<div class="available-rooms-cards">
+    <p>Room number: ${room.number} </p>
+    <p>Room type: ${room.roomType} </p>
+    <p>Cost per night: ${room.costPerNight}</p>
+    <p>Bed Type: ${room.bedSize}</p>
+    <p>Number of beds: ${room.numBeds}</p>
+    <button id="${id}"> BOOK </button>
+  </div>
+    `;
+    id++
+  })
+}
 
 
 

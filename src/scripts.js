@@ -16,7 +16,7 @@ import {
 } from "./customer-bookings";
 //import { loadHomePage } from './domUpdates';
 import { handleLogin, checkValidCustomerLogin } from "./login";
-import { loadDashboardPage, renderRoomTypes } from "./domUpdates";
+import { loadDashboardPage, renderRoomTypes, renderAvailableRooms } from "./domUpdates";
 
 let customersData;
 let bookingsData;
@@ -66,8 +66,9 @@ getAllData().then(() => {
   findRoomForm.addEventListener("submit",(event) => {
     event.preventDefault();
     const availableRooms = getSelectedAvailableRooms(date.value, roomType.value, bookingsData, roomsData) //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
+    console.log("availableRooms:=====", availableRooms);
     modal.style.display = "none";
-    
+    renderAvailableRooms(availableRooms);
   })  
 
   loginForm.addEventListener("submit", (event) => {
