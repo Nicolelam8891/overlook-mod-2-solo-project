@@ -1,6 +1,17 @@
 import { postNewBookedRoom } from "./apiCalls";
 import { getAllCustomerBookings, getAllRoomTypes } from "./customer-bookings";
 
+// Get today's date, prevent customer handle error
+const today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+const yyyy = today.getFullYear();
+
+const currentDate = yyyy + '-' + mm + '-' + dd;
+
+// Set the min attribute for the input element
+document.querySelector('input[type="date"]').setAttribute('min', currentDate);
+
 /* QuerySelectors here */
 const loginPage = document.querySelector(".login-page");
 const dashboardPage = document.querySelector(".dashboard-page");
