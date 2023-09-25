@@ -90,7 +90,7 @@ export const getSelectedAvailableRooms = (
     "Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search.";
   if (getAvailableRooms.length === 0) {
     //if the array is empty, return an apology!
-    alert(apologyMessage);
+    console.log("apologyMessage:=====", apologyMessage);
     return apologyMessage;
   } else {
     return getAvailableRooms;
