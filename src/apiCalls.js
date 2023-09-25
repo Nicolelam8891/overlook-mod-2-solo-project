@@ -31,7 +31,7 @@ export const postNewBookedRoom = (userID, dateSelected, roomNumber) => {
   return (
     fetch("http://localhost:3001/api/v1/bookings", {
       method: "POST",
-      body: JSON.stringify(postObject),
+      body: JSON.stringify(postNewBooking),
       headers: {
         "Content-Type": 'application/json', 
       }

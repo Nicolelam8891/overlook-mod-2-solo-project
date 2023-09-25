@@ -3,7 +3,12 @@
 // Do not delete or rename this file ********
 // An example of how you tell webpack to use a CSS (SCSS) file
 import "./css/styles.css";
-import { getCustomers, getBookings, getRooms } from "./apiCalls";
+import {
+  getCustomers,
+  getBookings,
+  getRooms,
+  postNewBookedRoom,
+} from "./apiCalls";
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import "./images/turing-logo.png";
 import "./images/sage1.png";
@@ -16,7 +21,11 @@ import {
 } from "./customer-bookings";
 //import { loadHomePage } from './domUpdates';
 import { handleLogin, checkValidCustomerLogin } from "./login";
-import { loadDashboardPage, renderRoomTypes, renderAvailableRooms } from "./domUpdates";
+import {
+  loadDashboardPage,
+  renderRoomTypes,
+  renderAvailableRooms,
+} from "./domUpdates";
 
 let customersData;
 let bookingsData;
@@ -35,6 +44,7 @@ const span = document.querySelector(".close"); //this is the <span> element that
 const findRoomForm = document.querySelector(".find-room-form");
 const date = document.querySelector(".date-input");
 const roomType = document.querySelector(".drop-down-menu");
+const availableRoomsBox = document.querySelector(".available-rooms-box");
 
 const getAllData = () => {
   return Promise.all([getCustomers(), getBookings(), getRooms()]).then(
@@ -47,29 +57,44 @@ const getAllData = () => {
 };
 
 getAllData().then(() => {
-
-  findRoomButton.onclick = function() {
+  findRoomButton.onclick = function () {
     modal.style.display = "block";
     renderRoomTypes(roomsData);
-  }
-  
-  span.onclick = function() {
+  };
+
+  span.onclick = function () {
     modal.style.display = "none";
-  }
-  
-  window.onclick = function(event) {
+  };
+
+  window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+  };
 
-  findRoomForm.addEventListener("submit",(event) => {
+  findRoomForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const availableRooms = getSelectedAvailableRooms(date.value, roomType.value, bookingsData, roomsData) //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
-    console.log("availableRooms:=====", availableRooms);
+    const availableRooms = getSelectedAvailableRooms(
+      date.value,
+      roomType.value,
+      bookingsData,
+      roomsData
+    ); //remember to do .value or it won't work! It will go back to where it's being inputed in HTML
     modal.style.display = "none";
     renderAvailableRooms(availableRooms);
-  })  
+  });
+
+  availableRoomsBox.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (event.target.classList.contains("bookButtons")) {
+      const card = event.target.closest(".available-rooms-cards");
+      const roomNumberElement = card.querySelector("p[id]"); //gives me the element
+      const roomId = parseInt(roomNumberElement.id)
+      let newdate = date.value
+      newdate = newdate.replace(/-/g, '/');
+      postNewBookedRoom(customerIdNumber, newdate, roomId);
+    }
+  });
 
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -80,9 +105,20 @@ getAllData().then(() => {
     if (successfulLogin === true && Number.isInteger(customerIdNumber)) {
       //isInteger will check if value pass is an integer or not.
       //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
-      allCustomerBookings = getAllCustomerBookings(customerIdNumber,bookingsData);
-      pastCustomerRooms = getPastOrUpcomingCustomerBookings("past", allCustomerBookings, roomsData);
-      upcomingCustomerRooms = getPastOrUpcomingCustomerBookings("upcoming", allCustomerBookings, roomsData);
+      allCustomerBookings = getAllCustomerBookings(
+        customerIdNumber,
+        bookingsData
+      );
+      pastCustomerRooms = getPastOrUpcomingCustomerBookings(
+        "past",
+        allCustomerBookings,
+        roomsData
+      );
+      upcomingCustomerRooms = getPastOrUpcomingCustomerBookings(
+        "upcoming",
+        allCustomerBookings,
+        roomsData
+      );
       console.log("upcomingCustomerRooms:=====", upcomingCustomerRooms);
 
       loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
