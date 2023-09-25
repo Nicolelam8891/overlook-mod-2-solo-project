@@ -65,7 +65,7 @@ const getAllData = () => {
 window.addEventListener("load", getAllData);
 
 dashboardButton.onclick = function () {
-  loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
+  loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData);
 }
 
 findRoomButton.onclick = function () {
@@ -134,7 +134,7 @@ successButton.addEventListener("click", (event) => {
     allCustomerBookings,
     roomsData
   );
-  loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
+  loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData);
   successfulBookingModal.style.display = "none";
 });
 
@@ -161,6 +161,7 @@ loginForm.addEventListener("submit", (event) => {
       allCustomerBookings,
       roomsData
     );
-    loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms);
+    loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData);
+    
   }
 });
