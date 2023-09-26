@@ -38,6 +38,7 @@ Wait no further, book with us today, and embrace the serene stay you've been yea
 If you would like to run the app from your machine, follow these instructions:
 
 - Fork [this](https://github.com/Nicolelam8891/overlook_project) repository.
+
 - Clone it to your local machine using the command: `git@github.com:Nicolelam8891/overlook_project.git`.
 - Run the command: `cd overlook`
 - Run the command: `npm install`
@@ -46,12 +47,11 @@ If you would like to run the app from your machine, follow these instructions:
 - Use a username between `customer01` and `customer50` along with the password `overlook2021` to log in.
 
 ## Preview of App:
-
 ![Overlook](https://github.com/Nicolelam8891/overlook_project/assets/132624450/96dd418d-262c-44af-93d4-59ad0d608381)
 
 ## Context:
-
 I am currently in Mod 2, week 5.
+
 I am currently a student at Turing School of Software & Design.
 I am currently focusing on front-end.
 Turing is a 7-month program, offering a total of 4 modules, each module spanning 6 weeks long.
