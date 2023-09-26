@@ -247,19 +247,33 @@ button:active {
   margin-top: 150px;
 }
 
+.outer-available-rooms-box {
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     background-color: #b8d6c4;
+     width: 500px;
+     border: 3px solid rgb(221, 233, 227);
+     padding: 50px;
+     margin: 20px;
+     border-radius: 20px;
+}
+
 .available-rooms-box {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: #b8d6c4;
-  width: 500px;
-  height: 600px;
-  border: 3px solid rgb(221, 233, 227);
-  padding: 50px;
-  margin: 20px;
-  border-radius: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: row;
+     overflow-y: auto;
+     overflow-x: hidden;
+     background-color: #b8d6c4;
+     width: 400px;
+     height: 600px;
+     border: 3px solid rgb(131, 165, 148);
+     padding: 50px;
+     margin: 20px;
+     border-radius: 20px;
+     flex-wrap: wrap;
 }
 
 .available-rooms-box::-webkit-scrollbar {
