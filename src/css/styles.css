@@ -156,6 +156,7 @@ button:active {
   background-color: #82a393;
   color: #b8d6c4;
   font-weight: bold;
+  width: 150px;
   font-family: fantasy;
   border: none;
   cursor: pointer;
@@ -174,7 +175,14 @@ button:active {
 
 .login-button-wrapper {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-error-message {
+  color: rgb(203, 79, 79);
+  font-weight: bolder;
+  font-family: fantasy;
 }
 
 .past-booking-cards,

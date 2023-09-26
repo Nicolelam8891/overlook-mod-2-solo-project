@@ -25,6 +25,7 @@ const availableRoomsBox = document.querySelector(".available-rooms-box");
 const availableRoomsPage = document.querySelector(".available-rooms-page");
 const outerMainNav = document.querySelector(".outer-main-nav")
 const totalSpentTitle = document.querySelector(".total-spent-title")
+const loginErrorMessage = document.querySelector(".login-error-message")
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData) => {
   dashboardPage.classList.remove("hidden"); //will unhide the dashboard
@@ -38,8 +39,22 @@ export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms, allC
 export const loadAvailableRoomsPage = () => {
   dashboardPage.classList.add("hidden"); //will hide the dashboard page
   availableRoomsPage.classList.remove("hidden"); //will unhide avail rooms page
-
 };
+
+//
+export const loginMessageError = (errorMessage1, errorMessage2) => {
+  //creating another function inside of the loginMessageError
+  const showMessage = (errorMessage) => { //takes in an argument
+      if (typeof errorMessage === 'string') {
+          loginErrorMessage.classList.remove("hidden");
+          loginErrorMessage.innerText = errorMessage;
+      }
+  };
+  showMessage(errorMessage1);
+  showMessage(errorMessage2);
+}
+
+
 
 export const renderPastAndUpcomingBookingsCards = (pastCustomerRooms, upcomingCustomerRooms) => {
   pastCustomerBookings.innerHTML = "";

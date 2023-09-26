@@ -26,6 +26,7 @@ import {
   renderRoomTypes,
   renderAvailableRooms,
   loadAvailableRoomsPage,
+  loginMessageError
 } from "./domUpdates";
 
 let customersData;
@@ -140,6 +141,8 @@ loginForm.addEventListener("submit", (event) => {
   // console.log("customerIdNumber:=====", customerIdNumber);
   const successfulLogin = handleLogin(userName.value, password.value); //need the .value in order for this to capture the text of what the customer types in
   // console.log("successfulLogin:=====", successfulLogin);
+  loginMessageError(customerIdNumber, successfulLogin)
+
   if (successfulLogin === true && Number.isInteger(customerIdNumber)) {
     //isInteger will check if value pass is an integer or not.
     //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
