@@ -1,5 +1,15 @@
-Abstract:
+# Overlook Solo Porject
+<div align="center">
+<b>Built With:</b>
+<br>
+Javascript | HTML | CSS | REST API
+<br>
+<em>Testing Technologies:</em>
+<br>
+ Mocha & Chai 
+</div>
 
+## Abstract: 
 Welcome to Sage Serenity Hotel, your ultimate destination for relaxation! Nestled amidst the heart of the city, our hotel stands as a haven of calm, promising an experience that rejuvenates both mind and body.
 
 Whether you're on a business trip, a romantic getaway, a family trip, or simply seeking a peaceful and relaxing night, we have just the space for you~
@@ -15,12 +25,27 @@ Dive into a palette of soothing sage greens, which flow throughout our interiors
 
 Wait no further, book with us today, and embrace the serene stay you've been yearning for!
 
-Contributors:
-Nicole Ngoc Gia Lam 
+## Contributors: 
+- [Ngoc Nicole Gia Lam](https://github.com/Nicolelam8891)
 
-Installation Instructions:
+## Installation Instructions 
+- You may log in with a username between `customer01` through `customer50` and the password `overlook2021`
 
 If you would like to run the app from your machine, follow these instructions:
+
+- Fork [this](https://github.com/Nicolelam8891/overlook_project) repository. 
+- Clone it to your local machine using the command: `git@github.com:Nicolelam8891/overlook_project.git`.
+- Run the command: `cd overlook`
+- Run the command: `npm install`
+- Run the command: `npm start`
+- Once the modules have finished compiling, enter `http://localhost:8080/` into your browser to see the live web page. 
+- Use a username between `customer01` and `customer50` along with the password `overlook2021` to log in. 
+
+## Preview of App:
+
+## Context: 
+Currently in Mod 2, week 5.
+
 
 Fork this repository.
 Clone it to your local machine using the command: git clone git@github.com:Nicolelam8891/overlook_project.git
@@ -33,14 +58,14 @@ Use a username between customer01 and customer50 along with the password overloo
 Preview of App:
 https://github.com/Nicolelam8891/overlook_project/assets/132624450/4dfe2fbc-bb56-4436-a695-d0fcdad2e5b0
 
-
 Context: Mod 2, Week 5
+
 I am currently a student at Turing School of Software & Design.
 I am currently focusing on front-end.
 Turing is a 7-month program, offering a total of 4 modules, each moduale spanning 6 weeks long.
 This project was completed during the fifth week of the second module as our final solo project.
 
-Learning Goals:
+## Learning Goals:
 Write clean, DRY JavaScript
 Write semantic HTML, and efficient CSS to form a usable user interface
 User is able to use the entire app with only a keypad
@@ -55,15 +80,15 @@ Document changes with atomic commits and created different branches
 Tech used: Github, Terminal, VS Code, Dev Tools, Javascript, Figma, CSS, and HTML.
 Resources used: MDN Documents, Google, Stack Overflow.
 
-Wins + Challenges:
-Wins: 
+## Wins and Challenges:
+## Wins: 
 Practicing and enacting pseudocode was an excellent experience in being able to create a problem-solving framework.
 Improved troubleshooting skills by using console.log, inspecting elements in Dev Tools and drawing on existing knowledge to formulate targeted/searchable questions. 
 Utilizing GitHub issues and project board to track feature progress and bug fixes.
 Successfully implemented fetch and post API functionality 
 Successfully implented pictures into the app
 
-Challenges:
+## Challenges:
 Timeboxing how long each process will take
 Implementing GET fetch after data was posted to the server
 Chasing after bugs that did not display any errors
