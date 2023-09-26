@@ -59,7 +59,7 @@ If you would like to run the app from your machine, follow these instructions:
 
 ## Learning Goals:
 
--Write clean, DRY JavaScript
+- Write clean, DRY JavaScript
 -Write semantic HTML, and efficient CSS to form a usable user interface
 -User is able to use the entire app with only a keypad
 -Implemented accessibility
