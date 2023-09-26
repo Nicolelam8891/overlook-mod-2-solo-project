@@ -29,7 +29,7 @@ describe("calculate customer bookings", function () {
     const customerRoomNumbers = getCustomerRoomNumbers(allCustomerBookings);
     const sum = calculateBookingsSum(customerRoomNumbers, roomsData);
    
-    expect(sum).to.equal(708.84);
+    expect(sum).to.equal("708.84");
   });
 });
 
