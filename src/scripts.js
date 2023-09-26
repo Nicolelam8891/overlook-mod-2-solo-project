@@ -10,8 +10,11 @@ import {
   postNewBookedRoom,
 } from "./apiCalls";
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import "./images/turing-logo.png";
 import "./images/sage1.png";
+import "./images/single.png";
+import "./images/junior.png";
+import "./images/suite.png";
+import "./images/residential.png";
 
 import {
   getAllCustomerBookings,
