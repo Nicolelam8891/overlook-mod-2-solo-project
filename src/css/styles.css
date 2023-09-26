@@ -56,7 +56,6 @@ button {
   cursor: pointer;
   border-radius: 10px;
   font-size: 20px;
-  outline: none;
 }
 button:hover {
   background-color: #8cb2a5;
@@ -162,7 +161,6 @@ button:active {
   cursor: pointer;
   border-radius: 10px;
   font-size: 20px;
-  outline: none;
 }
 
 .login-button:hover {
