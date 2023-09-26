@@ -72,7 +72,7 @@ export const getSelectedAvailableRooms = (
   const currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, "/");
   //if statements starts here first so the customer can fix the error prior to more code being executed, like in the elevator unit test.
   if (formattedDateSelected < currentDate) {
-    return `You have selected a date from the past, please select a date in the future.`;
+    return `Please select a date.`;
   }
   //filter: this will return an array of booking objects of all unavail dates
   //map: this will return an array of the room numbers that are unavail
