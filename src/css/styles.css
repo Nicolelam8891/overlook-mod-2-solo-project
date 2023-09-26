@@ -137,7 +137,6 @@ button:active {
   display: flex;
   justify-content: center;
   margin-top: 150px;
-
 }
 
 .login-box {
@@ -224,6 +223,7 @@ button:active {
   font-family: fantasy;
   font-size: large;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -264,7 +264,6 @@ button:active {
 .available-rooms-wrapper {
   display: flex;
   justify-content: center;
-
 }
 
 .outer-available-rooms-box {
