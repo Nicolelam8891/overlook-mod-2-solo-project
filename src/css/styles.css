@@ -197,8 +197,8 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
-  height: 240px;
+  width: 275px;
+  height: 445px;
   color: #242a28;
   background-color: #8ebaa4;
   font-family: fantasy;
@@ -298,3 +298,8 @@ button:active {
   background-color: rgba(107, 171, 127, 0.5);
   border-radius: 5px;
 }
+
+.roomImg {
+     width: 300px;
+     height: 290px;
+   }
