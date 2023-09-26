@@ -23,9 +23,10 @@ const upcomingCustomerBookings = document.querySelector(
 const dropDownMenu = document.querySelector(".drop-down-menu");
 const availableRoomsBox = document.querySelector(".available-rooms-box");
 const availableRoomsPage = document.querySelector(".available-rooms-page");
-const outerMainNav = document.querySelector(".outer-main-nav")
-const totalSpentTitle = document.querySelector(".total-spent-title")
-const loginErrorMessage = document.querySelector(".login-error-message")
+const outerMainNav = document.querySelector(".outer-main-nav");
+const totalSpentTitle = document.querySelector(".total-spent-title");
+const loginErrorMessage = document.querySelector(".login-error-message");
+const bookingsMessage = document.querySelector(".bookings-message");
 
 export const loadDashboardPage = (pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData) => {
   dashboardPage.classList.remove("hidden"); //will unhide the dashboard
@@ -95,8 +96,10 @@ export const renderRoomTypes = (roomsData) => {
 
 export const renderAvailableRooms = (availableRooms) => {
   //function is expecting an array, but if it comes back as a string, then don't run this. This was causing an error when there were no avail rooms left.
+
+
   if (typeof availableRooms !== "string") { 
-    availableRoomsBox.innerHTML = "<h2>These are the available rooms!</h2> <p><em>Please choose a room of your choice!</em></p>";
+    availableRoomsBox.innerHTML = "";
     availableRooms.forEach((room) => {
       availableRoomsBox.innerHTML += `<div class="available-rooms-cards">
       <p>Room number: ${room.number} </p>
@@ -108,6 +111,8 @@ export const renderAvailableRooms = (availableRooms) => {
     </div>
       `;
     });
+  } else {
+    bookingsMessage.innerText = availableRooms
   }
 };
 

@@ -87,7 +87,7 @@ export const getSelectedAvailableRooms = (
       return !getUnavailableDateAndRoomNumber.includes(room.number) && room.roomType === roomSelected //will give rooms contingent on what customer selects
   });
   const apologyMessage =
-    "Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search.";
+    "Sage Serenity deeply apologizes for the inconvenience! The room type is not available on the date you selected, please adjust your search.";
   if (getAvailableRooms.length === 0) {
     //if the array is empty, return an apology!
     console.log("apologyMessage:=====", apologyMessage);
