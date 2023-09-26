@@ -9,12 +9,14 @@ import {
 } from "../src/customer-bookings";
 
 describe("get customer bookings", function () {
+  let result; 
+
   it("should be a function", function () {
     expect(getAllCustomerBookings).to.be.a("function");
   });
-  it("should return all customer bookings by specific customer ID", function () {
-    let result = getAllCustomerBookings(9, bookingsData);
 
+  it("should return all customer bookings by specific customer ID", function () {
+    result = getAllCustomerBookings(9, bookingsData);
     expect(result).to.deep.equal([
       {
         id: "5fwrgu4i7k55hl6sz",
@@ -24,6 +26,7 @@ describe("get customer bookings", function () {
       },
     ]);
   });
+
   it("should return an error statement when ID is not found", function () {
     let result = getAllCustomerBookings(1000, bookingsData);
     expect(result).to.equal("ID not found.");
@@ -31,22 +34,30 @@ describe("get customer bookings", function () {
 });
 
 describe("get customer booking timeline", function () {
+  let pastBookings, upcomingBookings, error;
+
+  beforeEach(function () {
+    pastBookings = getPastOrUpcomingCustomerBookings("past", bookingsData, roomsData);
+    upcomingBookings = getPastOrUpcomingCustomerBookings("upcoming", bookingsData, roomsData);
+    error = getPastOrUpcomingCustomerBookings("oops", bookingsData, roomsData);
+  });
+
   it("should be a function", function () {
     expect(getPastOrUpcomingCustomerBookings).to.be.a("function");
   });
+
   it("should return past or upcoming bookings", function () {
-    let pastBookings = getPastOrUpcomingCustomerBookings(
+    pastBookings = getPastOrUpcomingCustomerBookings(
       "past",
       bookingsData,
       roomsData
     );
-    let upcomingBookings = getPastOrUpcomingCustomerBookings(
+    upcomingBookings = getPastOrUpcomingCustomerBookings(
       "upcoming",
       bookingsData,
       roomsData
     );
-    console.log("upcomingBookings:=====", upcomingBookings);
-    let error = getPastOrUpcomingCustomerBookings(
+    error = getPastOrUpcomingCustomerBookings(
       "oops",
       bookingsData,
       roomsData
@@ -87,11 +98,14 @@ describe("get customer booking timeline", function () {
 });
 
 describe("get customer available rooms", function () {
+  let availableRooms;
+
   it("should be a function", function () {
     expect(getSelectedAvailableRooms).to.be.a("function");
   });
+
   it("should return all available rooms", function () {
-    let availableRooms = getSelectedAvailableRooms(
+    availableRooms = getSelectedAvailableRooms(
       "2023/12/14",
       "residential suite",
       bookingsData,
@@ -108,8 +122,9 @@ describe("get customer available rooms", function () {
       },
     ]);
   });
+
   it("should log an error message if customer choose a past date", function () {
-    let availableRooms = getSelectedAvailableRooms(
+    availableRooms = getSelectedAvailableRooms(
       "2022/04/22",
       "residential suite",
       bookingsData,
@@ -117,15 +132,21 @@ describe("get customer available rooms", function () {
     );
     expect(availableRooms).to.equal("Please select a date.");
   });
- 
 });
 
 describe("should get only unqiue room types", function () {
+  let uniqueRoomTypes;
+
+  beforeEach(function () {
+    uniqueRoomTypes = getAllRoomTypes(roomsData);
+  });
+
   it("should be a function", function () {
     expect(getAllRoomTypes).to.be.a("function");
   });
+
   it("should return room types without any duplicates", function () {
-    const uniqueRoomTypes = getAllRoomTypes(roomsData);
+    uniqueRoomTypes = getAllRoomTypes(roomsData);
     expect(uniqueRoomTypes).to.deep.equal([
       "residential suite",
       "suite",

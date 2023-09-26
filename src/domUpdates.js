@@ -27,6 +27,7 @@ const outerMainNav = document.querySelector(".outer-main-nav");
 const totalSpentTitle = document.querySelector(".total-spent-title");
 const loginErrorMessage = document.querySelector(".login-error-message");
 const bookingsMessage = document.querySelector(".bookings-message");
+const dashboardButton = document.querySelector(".dashboard-button")
 
 export const loadDashboardPage = (
   pastCustomerRooms,
@@ -45,6 +46,7 @@ export const loadDashboardPage = (
 export const loadAvailableRoomsPage = () => {
   dashboardPage.classList.add("hidden"); //will hide the dashboard page
   availableRoomsPage.classList.remove("hidden"); //will unhide avail rooms page
+  dashboardButton.classList.remove("hidden");
 };
 
 //
@@ -137,6 +139,7 @@ export const renderAvailableRooms = (availableRooms) => {
     });
   } else {
     bookingsMessage.innerText = availableRooms;
+    availableRoomsBox.innerHTML = "";
   }
 };
 
