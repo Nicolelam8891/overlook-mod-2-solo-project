@@ -35,32 +35,51 @@ describe("get customer booking timeline", function () {
     expect(getPastOrUpcomingCustomerBookings).to.be.a("function");
   });
   it("should return past or upcoming bookings", function () {
-    let pastBookings = getPastOrUpcomingCustomerBookings("past", bookingsData);
+    let pastBookings = getPastOrUpcomingCustomerBookings(
+      "past",
+      bookingsData,
+      roomsData
+    );
     let upcomingBookings = getPastOrUpcomingCustomerBookings(
       "upcoming",
-      bookingsData
+      bookingsData,
+      roomsData
     );
-    let error = getPastOrUpcomingCustomerBookings("oops", bookingsData);
+    console.log("upcomingBookings:=====", upcomingBookings);
+    let error = getPastOrUpcomingCustomerBookings(
+      "oops",
+      bookingsData,
+      roomsData
+    );
     expect(pastBookings).to.deep.equal([
       {
-        id: "5fwrgu4i7k55hl6sz",
-        userID: 9,
+        number: 15,
+        roomType: "single room",
+        bidet: false,
+        bedSize: "queen",
+        numBeds: 2,
+        costPerNight: 231.46,
         date: "2022/04/22",
-        roomNumber: 15,
       },
       {
-        id: "5fwrgu4i7k55hl6t7",
-        userID: 20,
+        number: 7,
+        roomType: "single room",
+        bidet: false,
+        bedSize: "queen",
+        numBeds: 2,
+        costPerNight: 231.46,
         date: "2022/02/16",
-        roomNumber: 7,
       },
     ]);
     expect(upcomingBookings).to.deep.equal([
       {
-        id: "5fwrgu4i7k55hl6t9",
-        userID: 20,
+        number: 14,
+        roomType: "suite",
+        bidet: false,
+        bedSize: "full",
+        numBeds: 2,
+        costPerNight: 477.38,
         date: "2023/12/14",
-        roomNumber: 14,
       },
     ]);
     expect(error).to.equal("Error");
@@ -86,7 +105,7 @@ describe("get customer available rooms", function () {
         bedSize: "queen",
         numBeds: 1,
         costPerNight: 358.4,
-      }
+      },
     ]);
   });
   it("should log an error message if customer choose a past date", function () {
@@ -96,7 +115,9 @@ describe("get customer available rooms", function () {
       bookingsData,
       roomsData
     );
-    expect(availableRooms).to.equal("You have selected a date from the past, please select a date in the future.");
+    expect(availableRooms).to.equal(
+      "You have selected a date from the past, please select a date in the future."
+    );
   });
   it("should log an error if no rooms are avaiable for selected data and room type", function () {
     let availableRooms = getSelectedAvailableRooms(
@@ -105,7 +126,9 @@ describe("get customer available rooms", function () {
       bookingsData,
       roomsData
     );
-    expect(availableRooms).to.equal("Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search.");
+    expect(availableRooms).to.equal(
+      "Sage Serenity Hotel deeply apologizes for the inconvenience. The room type is not available on the date you selected, please adjust your search."
+    );
   });
 });
 
@@ -114,7 +137,11 @@ describe("should get only unqiue room types", function () {
     expect(getAllRoomTypes).to.be.a("function");
   });
   it("should return room types without any duplicates", function () {
-    const uniqueRoomTypes = getAllRoomTypes(roomsData)
-    expect(uniqueRoomTypes).to.deep.equal(["residential suite", "suite", "single room"]);
+    const uniqueRoomTypes = getAllRoomTypes(roomsData);
+    expect(uniqueRoomTypes).to.deep.equal([
+      "residential suite",
+      "suite",
+      "single room",
+    ]);
   });
 });
