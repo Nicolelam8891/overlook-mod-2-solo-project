@@ -60,15 +60,15 @@ If you would like to run the app from your machine, follow these instructions:
 ## Learning Goals:
 
 - Write clean, DRY JavaScript
--Write semantic HTML, and efficient CSS to form a usable user interface
--User is able to use the entire app with only a keypad
--Implemented accessibility
--Build out functionality using functions that follow SRP
--Use array prototype methods to perform data manipulation
--Implement a robust testing suite using TDD
--Create a clear and accessible user interface
--Make network requests to retrieve data
--Document changes with atomic commits and created different branches
+- Write semantic HTML, and efficient CSS to form a usable user interface
+- The user is able to use the entire app with only a keypad
+- Implemented accessibility
+- Build out functionality using functions that follow SRP
+- Use array prototype methods to perform data manipulation
+- Implement a robust testing suite using TDD
+- Create a clear and accessible user interface
+- Make network requests to retrieve data
+- Document changes with atomic commits and create different branches 
 
 Tech used: Github, Terminal, VS Code, Dev Tools, Javascript, Figma, CSS, and HTML.
 Resources used: MDN Documents, Google, Stack Overflow.
@@ -77,15 +77,15 @@ Resources used: MDN Documents, Google, Stack Overflow.
 
 ## Wins:
 
--Practicing and enacting pseudocode was an excellent experience in being able to create a problem-solving framework.
--Improved troubleshooting skills by using console.log, inspecting elements in Dev Tools and drawing on existing knowledge to formulate targeted/searchable questions.
--Utilizing GitHub issues and project board to track feature progress and bug fixes.
--Successfully implemented fetch and post API functionality
--Successfully implented pictures into the app
+- Practicing and enacting pseudocode was an excellent experience in being able to create a problem-solving framework.
+- Improved troubleshooting skills by using console.log, inspecting elements in Dev Tools, and drawing on existing knowledge to formulate targeted/searchable questions.
+- Utilizing GitHub issues and project board to track feature progress and bug fixes.
+- Successfully implemented fetch and post API functionality
+- Successfully implemented pictures into the app
 
 ## Challenges:
 
--Timeboxing how long each process will take
--Implementing GET fetch after data was posted to the server
--Chasing after bugs that did not display any errors
--Keeping data model functions separate from DOM functions and learning where to call API fetches
+- Timeboxing how long each process will take
+- Implementing GET fetch after data was posted to the server
+- Chasing after bugs that did not display any errors
+- Keeping data model functions separate from DOM functions and learning where to call API fetches
