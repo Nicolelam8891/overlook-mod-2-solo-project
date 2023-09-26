@@ -31,7 +31,7 @@ Once the modules have finished compiling, enter http://localhost:8080/ into your
 Use a username between customer01 and customer50 along with the password overlook2021 to log in.
 
 Preview of App:
-![Overlook](https://github.com/Nicolelam8891/overlook_project/assets/132624450/4dfe2fbc-bb56-4436-a695-d0fcdad2e5b0)
+https://github.com/Nicolelam8891/overlook_project/assets/132624450/4dfe2fbc-bb56-4436-a695-d0fcdad2e5b0
 
 
 Context: Mod 2, Week 5
