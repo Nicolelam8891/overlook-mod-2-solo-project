@@ -36,6 +36,7 @@ export const loadDashboardPage = (
   roomsData
 ) => {
   dashboardPage.classList.remove("hidden"); //will unhide the dashboard
+  dashboardButton.classList.add("hidden");
   loginPage.classList.add("hidden"); //will hide the login page
   availableRoomsPage.classList.add("hidden"); //will hide the avail rooms page
   outerMainNav.classList.remove("hidden");
