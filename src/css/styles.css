@@ -200,8 +200,7 @@ button:active {
   font-family: fantasy;
 }
 
-.past-booking-cards,
-.upcoming-booking-cards,
+.booking-cards,
 .available-rooms-cards {
   display: flex;
   flex-direction: column;

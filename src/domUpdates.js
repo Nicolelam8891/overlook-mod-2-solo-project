@@ -25,6 +25,7 @@ const availableRoomsBox = document.querySelector(".available-rooms-box");
 const availableRoomsPage = document.querySelector(".available-rooms-page");
 const outerMainNav = document.querySelector(".outer-main-nav");
 const totalSpentTitle = document.querySelector(".total-spent-title");
+const availableTitle = document.querySelector(".available-title")
 const loginErrorMessage = document.querySelector(".login-error-message");
 const bookingsMessage = document.querySelector(".bookings-message");
 const dashboardButton = document.querySelector(".dashboard-button")
@@ -79,35 +80,26 @@ export const renderPastAndUpcomingBookingsCards = (
   pastCustomerRooms,
   upcomingCustomerRooms
 ) => {
-  pastCustomerBookings.innerHTML = "";
-  pastCustomerRooms.forEach((room) => {
-    const roomImages = getRoomImages(room.roomType);
-    pastCustomerBookings.innerHTML +=
-      //need to add card after card
-      `<div class="past-booking-cards">
-      ${roomImages}
-      <p>Room number: ${room.number} </p>
-      <p>Room type: ${room.roomType} </p>
-      <p>Bed type: ${room.bedSize} </p>
-      <p>Number of beds: ${room.numBeds} </p>
-      <p>Date: ${room.date} </p>
-    </div>
-    `;
-  });
+  const render = (element, rooms) => {
+    element.innerHTML = "";
+    rooms.forEach((room) => {
+     const roomImages = getRoomImages(room.roomType);
+     element.innerHTML +=
+       //need to add card after card
+       `<div class="booking-cards">
+       ${roomImages}
+       <p>Room number: ${room.number} </p>
+       <p>Room type: ${room.roomType} </p>
+       <p>Bed type: ${room.bedSize} </p>
+       <p>Number of beds: ${room.numBeds} </p>
+       <p>Date: ${room.date} </p>
+     </div>
+     `;
+   });
+ }
 
-  upcomingCustomerBookings.innerHTML = "";
-  upcomingCustomerRooms.forEach((room) => {
-    const roomImages = getRoomImages(room.roomType);
-    upcomingCustomerBookings.innerHTML += `<div class="upcoming-booking-cards">
-    ${roomImages}
-    <p>Room number: ${room.number} </p>
-    <p>Room type: ${room.roomType} </p>
-    <p>Bed type: ${room.bedSize} </p>
-    <p>Number of beds: ${room.numBeds} </p>
-    <p>Date: ${room.date} </p>
-  </div>
-    `;
-  });
+ render(pastCustomerBookings, pastCustomerRooms)
+ render(upcomingCustomerBookings, upcomingCustomerRooms)
 };
 
 export const renderRoomTypes = (roomsData) => {
@@ -123,7 +115,8 @@ export const renderAvailableRooms = (availableRooms) => {
   //function is expecting an array, but if it comes back as a string, then don't run this. This was causing an error when there were no avail rooms left.
 
   if (typeof availableRooms !== "string") {
-    bookingsMessage.innerText = "Please book a room of your choice!"
+    availableTitle.innerText = "These are the available rooms!"
+    bookingsMessage.innerText = "Please select a date and room type of your choice!"
     availableRoomsBox.innerHTML = "";
     availableRooms.forEach((room) => {
       const roomImages = getRoomImages(room.roomType);
@@ -141,6 +134,10 @@ export const renderAvailableRooms = (availableRooms) => {
   } else {
     bookingsMessage.innerText = availableRooms;
     availableRoomsBox.innerHTML = "";
+  }
+
+  if (availableRooms.includes("Sage")){
+    availableTitle.innerText = "We're Sorry!"
   }
 };
 
