@@ -117,6 +117,7 @@ describe("get customer available rooms", function () {
     );
     expect(availableRooms).to.equal("Please select a date.");
   });
+ 
 });
 
 describe("should get only unqiue room types", function () {
