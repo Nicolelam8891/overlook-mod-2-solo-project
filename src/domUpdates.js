@@ -120,6 +120,7 @@ export const renderAvailableRooms = (availableRooms) => {
   //function is expecting an array, but if it comes back as a string, then don't run this. This was causing an error when there were no avail rooms left.
 
   if (typeof availableRooms !== "string") {
+    bookingsMessage.innerText = "Please book a room of your choice!"
     availableRoomsBox.innerHTML = "";
     availableRooms.forEach((room) => {
       const roomImages = getRoomImages(room.roomType);
