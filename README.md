@@ -47,7 +47,6 @@ If you would like to run the app from your machine, follow these instructions:
 ## Context: 
 Currently in Mod 2, week 5.
 
-
 Fork this repository.
 Clone it to your local machine using the command: git clone git@github.com:Nicolelam8891/overlook_project.git
 Run the command: cd overlook
@@ -55,9 +54,6 @@ Run the command: npm install
 Run the command: npm start
 Once the modules have finished compiling, enter http://localhost:8080/ into your browser to see the live web page.
 Use a username between customer01 and customer50 along with the password overlook2021 to log in.
-
-Preview of App:
-https://github.com/Nicolelam8891/overlook_project/assets/132624450/4dfe2fbc-bb56-4436-a695-d0fcdad2e5b0
 
 Context: Mod 2, Week 5
 
