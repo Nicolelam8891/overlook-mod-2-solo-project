@@ -4,16 +4,24 @@ const expect = chai.expect;
 import { handleLogin, checkValidCustomerLogin } from '../src/login';
 
 describe("handle user login", function() {
+  let username;
+  let password;
+  let result; 
+  beforeEach(function() {
+    username = "";
+    password = "";
+    result = undefined;
+  });
+
   it("should be a function", function() {
     expect(handleLogin).to.be.a("function");
   });
+
   it("should alert when login input is empty", function() {
-    let username = "";
-    let password = "";
-    let result = handleLogin(username, password)
+    result = handleLogin(username, password)
     expect(result).to.equal("Please enter both your username and password.");
   });
-
+  
   it("should alert when there is a successful login ", function() {
     let username = "customer50";
     let password = "overlook2021";

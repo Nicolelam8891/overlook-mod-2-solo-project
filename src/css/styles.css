@@ -137,6 +137,7 @@ button:active {
   display: flex;
   justify-content: center;
   margin-top: 150px;
+
 }
 
 .login-box {
@@ -159,6 +160,8 @@ button:active {
 .username-wrapper,
 .password-wrapper {
   margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .login-button {
@@ -262,7 +265,7 @@ button:active {
 .available-rooms-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 150px;
+
 }
 
 .outer-available-rooms-box {
