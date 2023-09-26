@@ -62,6 +62,12 @@ const getAllData = () => {
   );
 };
 
+const updateCustomerData = () => {
+  allCustomerBookings = getAllCustomerBookings(customerIdNumber,bookingsData);
+  pastCustomerRooms = getPastOrUpcomingCustomerBookings("past",allCustomerBookings,roomsData);
+  upcomingCustomerRooms = getPastOrUpcomingCustomerBookings("upcoming",allCustomerBookings,roomsData);
+}
+
 window.addEventListener("load", getAllData);
 
 dashboardButton.onclick = function () {
@@ -123,17 +129,7 @@ availableRoomsBox.addEventListener("click", (event) => {
 
 successButton.addEventListener("click", (event) => {
   event.preventDefault();
-  allCustomerBookings = getAllCustomerBookings(customerIdNumber, bookingsData);
-  pastCustomerRooms = getPastOrUpcomingCustomerBookings(
-    "past",
-    allCustomerBookings,
-    roomsData
-  );
-  upcomingCustomerRooms = getPastOrUpcomingCustomerBookings(
-    "upcoming",
-    allCustomerBookings,
-    roomsData
-  );
+  updateCustomerData();
   loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData);
   successfulBookingModal.style.display = "none";
 });
@@ -147,21 +143,9 @@ loginForm.addEventListener("submit", (event) => {
   if (successfulLogin === true && Number.isInteger(customerIdNumber)) {
     //isInteger will check if value pass is an integer or not.
     //when these two are met, then the loadHomePage function will occur; otherwise, it will not.
-    allCustomerBookings = getAllCustomerBookings(
-      customerIdNumber,
-      bookingsData
-    );
-    pastCustomerRooms = getPastOrUpcomingCustomerBookings(
-      "past",
-      allCustomerBookings,
-      roomsData
-    );
-    upcomingCustomerRooms = getPastOrUpcomingCustomerBookings(
-      "upcoming",
-      allCustomerBookings,
-      roomsData
-    );
+    updateCustomerData();
     loadDashboardPage(pastCustomerRooms, upcomingCustomerRooms, allCustomerBookings, roomsData);
     
   }
 });
+
