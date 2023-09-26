@@ -15,9 +15,10 @@ export let handleLogin = (username, password) => {
 
 //checkValidCustomerLogin function gives you an id number
 export const checkValidCustomerLogin = (username) => {
-  const userId = username.slice(8) //take out "customer" but keeps the number, which will give me the id number "ex) 50"
+  let userId = username.slice(8) //take out "customer" but keeps the number, which will give me the id number "ex) 50"
+  userId = parseInt(userId)
   if (userId <= 50) { //hardcoded here. Another way of doing this is maping the id, which will give me an array of id numbers, then use .includes to see if the id number is there. If it is there, then the login is successful. If the id is not there, login is not successful. 
-    return parseInt(userId)  // return parseInt(userId); change string into a number
+    return userId  // return parseInt(userId); change string into a number
   } else {
     return `Sorry, this is not a valid ID number, please try again.`
   }
