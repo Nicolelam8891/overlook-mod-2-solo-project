@@ -18,12 +18,13 @@
         </p>
       </section>
     </header>
+    <main>
 <!-- dashboard page -->
     <nav class="outer-main-nav hidden">
       <nav class="main-nav">
         <section class="nav-left">
-          <button type="submit" class="dashboard-button">Dashboard</button>
-          <button type="submit" class="find-rooms-button">Find Rooms</button>
+          <button type="button" class="dashboard-button">Dashboard</button>
+          <button type="button" class="find-rooms-button">Find Rooms</button>
         </section>
         <section class="nav-right">
           <p class="total-spent-title">Total spent: </p>
@@ -95,12 +96,13 @@
       </section>
     </section>
   </section>
+</main>
 <!-- find rooms popup goes here -->
 <div id="findRoomsModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Please select a date and room type of your choice!</p>
+    <p class="modal-text">Please select a date and room type of your choice!</p>
         <form class="find-room-form">
           <label for="selectedDate">Date:</label>
           <input type="date" id="selectedDate" class="date-input">
@@ -117,7 +119,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>You placed a successful booking!</p>
+    <p class="modal-text">You placed a successful booking!</p>
     <button class="success-button">Go back to dashboard</button>
   </div>
 </div>
