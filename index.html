@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sage Serenity Hotel</title>
+  </head>
+  <body>
+    <header>
+      <section>
+        <img class="flower" src="./images/sage1.png" alt="flower logo" />
+      </section>
+      <section>
+        <h1>Sage Serenity Hotel</h1>
+        <p class="sage-serenity-tagline">
+          <em>"Relax, Renew, Rejuvenate at Sage Serenity!"</em>
+        </p>
+      </section>
+    </header>
+    <main>
+<!-- dashboard page -->
+    <nav class="outer-main-nav hidden">
+      <nav class="main-nav">
+        <section class="nav-left">
+          <button type="button" class="dashboard-button hidden">Dashboard</button>
+          <button type="button" class="find-rooms-button">Find Rooms</button>
+        </section>
+        <section class="nav-right">
+          <p class="total-spent-title">Total spent: </p>
+      </nav>
+    </nav>
+    <section class="dashboard-page hidden"> 
+      <section class="booking-wrapper">
+        <div class="outer-booking-box">
+          <h2>Past bookings</h2>
+          <div class="booking-scroll-box" id="past-customer-bookings">
+<!-- past booking cards go here -->
+          </div>
+        </div>
+        <div class="outer-booking-box">
+          <h2>Upcoming bookings</h2>
+          <div class="booking-scroll-box" id="upcoming-customer-bookings">
+<!-- upcoming booking cards go here -->
+          </div>
+        </div>
+      </section>
+    </section>
+<!-- login page -->
+  <section class="login-page">
+    <section class="login-wrapper">
+      <div class="login-box">
+        <h2>Welcome to Sage Serenity!</h2>
+        <p><em>Please log in:</em></p>
+        <form class="login-form">
+          <div class="username-wrapper">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              aria-label="Username field"
+            />
+          </div>
+          <div class="password-wrapper">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              aria-label="Password field"
+            />
+          </div>
+          <div class="login-button-wrapper">
+            <input
+            class="login-button"
+            type="submit"
+            value="Login"
+            aria-label="Login button"
+            />
+            <p class="login-error-message hidden">Error Message</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+<!-- available rooms page -->
+  <section class="available-rooms-page hidden">
+    <section class="available-rooms-wrapper">
+      <section class="outer-available-rooms-box">
+      <h2 class="available-title">These are the available rooms!</h2>
+      <p class="bookings-message"><em></em></p>
+        <div class="available-rooms-box">
+          <!-- available room cards goes here -->
+        </div>
+      </section>
+    </section>
+  </section>
+</main>
+<!-- find rooms popup goes here -->
+<div id="findRoomsModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p class="modal-text"></p>
+        <form class="find-room-form">
+          <label for="selectedDate">Date:</label>
+          <input type="date" id="selectedDate" class="date-input">
+          <label for="roomtype">Room Type:</label>
+          <select id="roomType" class="drop-down-menu">
+<!-- room type goes here -->
+          </select>
+          <button type="submit" class="find-room-select-button">Find</button>
+        </form>
+  </div>
+</div>
+<!-- successful booking popup goes here -->
+<div id="successfulBookingModal" class="modal">
+<!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p class="modal-text">You placed a successful booking!</p>
+    <button class="success-button">Go back to dashboard</button>
+  </div>
+</div>
+<!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+<script src="bundle.js"></script>
+</body>
+</html>
+
