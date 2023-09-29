@@ -48,7 +48,7 @@ If you would like to run the app from your machine, follow these instructions:
 - You may log in with a username between `customer01` through `customer50` and the password `overlook2021`
 
 ## Preview of App:
-![Overlook](https://github.com/Nicolelam8891/overlook_project/assets/132624450/96dd418d-262c-44af-93d4-59ad0d608381)
+(https://github.com/Nicolelam8891/overlook_project/assets/132624450/96dd418d-262c-44af-93d4-59ad0d608381)
 
 ## Context:
 -I am currently in Mod 2, week 5.
