@@ -32,7 +32,7 @@ Wait no further, book with us today, and embrace the serene stay you've been yea
 - [Ngoc Nicole Gia Lam](https://github.com/Nicolelam8891)
 
 ## Installation Instructions
--Check out my app: https://github.com/Nicolelam8891/overlook-mod-2-solo-project
+-Check out my app: https://nicolelam8891.github.io/overlook-mod-2-solo-project/
 
 If you would like to run the app from your machine, follow these instructions:
 
