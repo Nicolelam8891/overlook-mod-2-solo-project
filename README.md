@@ -1,4 +1,4 @@
-# Overlook Solo Porject
+# Overlook Solo Project
 
 <div align="center">
 <b>Built With:</b>
